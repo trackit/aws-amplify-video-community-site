@@ -1,0 +1,24 @@
+{
+  "prod": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-awsamplifyvideoedu-prod-130301-authRole",
+      "UnauthRoleArn": "arn:aws:iam::394125495069:role/amplify-awsamplifyvideoedu-prod-130301-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::394125495069:role/amplify-awsamplifyvideoedu-prod-130301-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-awsamplifyvideoedu-prod-130301-deployment",
+      "UnauthRoleName": "amplify-awsamplifyvideoedu-prod-130301-unauthRole",
+      "StackName": "amplify-awsamplifyvideoedu-prod-130301",
+      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-awsamplifyvideoedu-prod-130301/fbe980c0-a1c7-11eb-a175-0abd4babf785"
+    },
+    "categories": {
+      "auth": {
+        "awsamplifyvideoedu37f1643b": {}
+      },
+      "video": {
+        "AwsAmplifyTrackitEduVOD": {
+          "s3UUID": "c1uel2yh"
+        }
+      }
+    }
+  }
+}

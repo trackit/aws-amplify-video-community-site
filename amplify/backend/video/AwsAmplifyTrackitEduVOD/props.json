@@ -1,0 +1,40 @@
+{
+    "shared": {
+        "resourceName": "AwsAmplifyTrackitEduVOD"
+    },
+    "template": {
+        "name": "Amplify_Video_HLS.json"
+    },
+    "contentDeliveryNetwork": {
+        "signedKey": true,
+        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA42K95r2WZmYbXx08z7KN\\nQBClc5OFwVvPXWLJqFnlBCi2Lgf+4ARS09ebteq9/jiFPFwjYpA10O46/CUCAjhm\\nBU4G1KBUnEJTWjGQGVI9Rq0x6BdzFMpN31pKkQgyTqxVReKjf8UFYIU//gm+K+dx\\nSoDa6zwBXS6Ro5LUQ88PF+mztTrpqIfBzJEAvcfO27YzyJqkxw89lbwN9REbnU6j\\nzv/ARyU346EI11m+IN/vQuA4abwjZ36D8otfgQkMpripJ34NjasXq9Xk06DfhHVM\\nX9WrZdy2dnmbuO+xI+J4IyVUiZZgeYn7WUnimAy4taxkHnUJRj6ERH9MunajIgQq\\ncQIDAQAB\\n-----END PUBLIC KEY-----\\n",
+        "rPublicName": "rCloudFrontPublicKey7uy65ejv",
+        "publicKeyName": "AwsAmplifyTrackitEduVOD-prod-publickey-7uy65ejv",
+        "secretPem": "AwsAmplifyTrackitEduVOD-prod-pem-7uy65ejv",
+        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:AwsAmplifyTrackitEduVOD-prod-pem-7uy65ejv-ePFsYG",
+        "functionName": "AwsAmplifyTrackitEduVOD-prod-tokenGen",
+        "enableDistribution": true
+    },
+    "parameters": {
+        "authRoleName": {
+            "Ref": "AuthRoleName"
+        },
+        "GraphQLAPIId": {
+            "Fn::GetAtt": [
+                "apiAwsAmplifyEduAPI",
+                "Outputs.GraphQLAPIIdOutput"
+            ]
+        },
+        "GraphQLEndpoint": {
+            "Fn::GetAtt": [
+                "apiAwsAmplifyEduAPI",
+                "Outputs.GraphQLAPIEndpointOutput"
+            ]
+        }
+    },
+    "permissions": {
+        "permissionSchema": [
+            "admin"
+        ]
+    }
+}

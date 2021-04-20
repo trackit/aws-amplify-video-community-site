@@ -1,0 +1,17 @@
+{
+    "authRoleName": {
+        "Ref": "AuthRoleName"
+    },
+    "GraphQLAPIId": {
+        "Fn::GetAtt": [
+            "apiAwsAmplifyEduAPI",
+            "Outputs.GraphQLAPIIdOutput"
+        ]
+    },
+    "GraphQLEndpoint": {
+        "Fn::GetAtt": [
+            "apiAwsAmplifyEduAPI",
+            "Outputs.GraphQLAPIEndpointOutput"
+        ]
+    }
+}

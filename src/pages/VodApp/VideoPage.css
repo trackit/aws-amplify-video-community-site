@@ -1,0 +1,12 @@
+.video {
+    padding: 10px;
+    box-sizing: border-box;
+}
+
+.video-wrapper {
+    background: black;
+}
+
+.video h2 {
+    margin-bottom: 0;
+}
