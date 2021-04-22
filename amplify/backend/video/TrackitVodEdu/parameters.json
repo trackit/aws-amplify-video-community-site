@@ -4,13 +4,13 @@
     },
     "GraphQLAPIId": {
         "Fn::GetAtt": [
-            "apiAwsAmplifyEduAPI",
+            "apiTrackitEduAPI",
             "Outputs.GraphQLAPIIdOutput"
         ]
     },
     "GraphQLEndpoint": {
         "Fn::GetAtt": [
-            "apiAwsAmplifyEduAPI",
+            "apiTrackitEduAPI",
             "Outputs.GraphQLAPIEndpointOutput"
         ]
     }

@@ -4,7 +4,7 @@
       "addmissingownerfields": true,
       "validatetypenamereservedwords": true,
       "useexperimentalpipelinedtransformer": false,
-      "enableiterativegsiupdates": false,
+      "enableiterativegsiupdates": true,
       "secondarykeyasgsi": true,
       "skipoverridemutationinputtypes": true
     },
@@ -12,7 +12,8 @@
       "enablexcodeintegration": true
     },
     "auth": {
-      "enablecaseinsensitivity": true
+      "enablecaseinsensitivity": true,
+      "useinclusiveterminology": true
     },
     "codegen": {
       "useappsyncmodelgenplugin": true,

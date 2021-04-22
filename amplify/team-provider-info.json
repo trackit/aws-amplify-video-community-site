@@ -1,22 +1,22 @@
 {
   "prod": {
     "awscloudformation": {
-      "AuthRoleName": "amplify-awsamplifyvideoedu-prod-130301-authRole",
-      "UnauthRoleArn": "arn:aws:iam::394125495069:role/amplify-awsamplifyvideoedu-prod-130301-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::394125495069:role/amplify-awsamplifyvideoedu-prod-130301-authRole",
+      "AuthRoleName": "amplify-trackiteduwebsite-prod-15738-authRole",
+      "UnauthRoleArn": "arn:aws:iam::394125495069:role/amplify-trackiteduwebsite-prod-15738-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::394125495069:role/amplify-trackiteduwebsite-prod-15738-authRole",
       "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-awsamplifyvideoedu-prod-130301-deployment",
-      "UnauthRoleName": "amplify-awsamplifyvideoedu-prod-130301-unauthRole",
-      "StackName": "amplify-awsamplifyvideoedu-prod-130301",
-      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-awsamplifyvideoedu-prod-130301/fbe980c0-a1c7-11eb-a175-0abd4babf785"
+      "DeploymentBucketName": "amplify-trackiteduwebsite-prod-15738-deployment",
+      "UnauthRoleName": "amplify-trackiteduwebsite-prod-15738-unauthRole",
+      "StackName": "amplify-trackiteduwebsite-prod-15738",
+      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-trackiteduwebsite-prod-15738/5cf70410-a2fd-11eb-b1c1-066369b0f943"
     },
     "categories": {
       "auth": {
-        "awsamplifyvideoedu37f1643b": {}
+        "trackiteduwebsitec7c6e003": {}
       },
       "video": {
-        "AwsAmplifyTrackitEduVOD": {
-          "s3UUID": "c1uel2yh"
+        "TrackitVodEdu": {
+          "s3UUID": "mrdyskth"
         }
       }
     }

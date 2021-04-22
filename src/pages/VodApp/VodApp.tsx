@@ -14,7 +14,7 @@ const ThumbnailCard = ({asset}: any, key: number) => {
     useEffect(() => {
         if (asset.thumbnail) {
             console.log(asset.thumbnail.id)
-            Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
+            /*Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
                 bucket: awsmobile.aws_user_files_s3_bucket,
                 customPrefix: {
                     public: 'thumbnails'
@@ -26,7 +26,7 @@ const ThumbnailCard = ({asset}: any, key: number) => {
                 })
                 .catch((err) => {
                     console.log(err)
-                })
+                })*/
         }
     }, [])
 
@@ -73,7 +73,7 @@ const VodApp = () => {
                 console.log(err)
             })
 
-        Storage.configure({
+        /*Storage.configure({
             AWSS3: {
                 bucket: awsmobile.aws_user_files_s3_bucket,
                 region: awsmobile.aws_user_files_s3_bucket_region,
@@ -84,7 +84,7 @@ const VodApp = () => {
             region: awsmobile.aws_user_files_s3_bucket_region
         })
             .then(result => console.log(result))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err))*/
     }, [])
 
     return (

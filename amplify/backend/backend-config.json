@@ -1,6 +1,6 @@
 {
   "auth": {
-    "awsamplifyvideoedu37f1643b": {
+    "trackiteduwebsitec7c6e003": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -12,7 +12,7 @@
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "awsamplifyvideoedu37f1643b",
+          "resourceName": "trackiteduwebsitec7c6e003",
           "attributes": [
             "UserPoolId",
             "AppClientIDWeb",
@@ -24,7 +24,7 @@
     }
   },
   "api": {
-    "AwsAmplifyEduAPI": {
+    "TrackitEduAPI": {
       "service": "AppSync",
       "providerPlugin": "awscloudformation",
       "output": {
@@ -32,7 +32,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authawsamplifyvideoedu37f1643b"
+              "userPoolId": "authtrackiteduwebsitec7c6e003"
             }
           },
           "additionalAuthenticationProviders": []
@@ -41,32 +41,10 @@
     }
   },
   "video": {
-    "AwsAmplifyTrackitEduVOD": {
+    "TrackitVodEdu": {
       "service": "video",
       "serviceType": "video-on-demand",
       "providerPlugin": "awscloudformation"
-    }
-  },
-  "storage": {
-    "AwsAmplifyTrackitEduAssets": {
-      "service": "S3",
-      "providerPlugin": "awscloudformation",
-      "dependsOn": [
-        {
-          "category": "auth",
-          "resourceName": "awsamplifyvideoedu37f1643b",
-          "attributes": [
-            "UserPoolId"
-          ]
-        },
-        {
-          "category": "auth",
-          "resourceName": "userPoolGroups",
-          "attributes": [
-            "AdminGroupRole"
-          ]
-        }
-      ]
     }
   }
 }

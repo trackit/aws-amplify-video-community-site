@@ -1,7 +1,9 @@
 import React from 'react';
 import 'video.js/dist/video-js.css';
 import './VideoPlayer.css'
-/*
+import videojs from 'video.js';
+import options = videojs.options;
+
 interface VideoPlayerPropsInferface {
     videoJsOptions: videojs.PlayerOptions;
 }
@@ -19,10 +21,12 @@ export default class VideoPlayer extends React.Component {
     }
 
     componentDidMount() {
-//        videojs.Hls.xhr.beforeRequest = function (options: any) {
-//            options.uri = `${options.uri}${videojs.getAllPlayers()[0].options(null).token}`;
-//            return options;
-//        };
+        //videojs.xhr({uri: this.props.sources[0].src}, () => {
+        //
+        //}).beforeSend = function (options: any) {
+        //    options.uri = `${options.uri}${videojs.getAllPlayers()[0].options(null).token}`;
+        //    return options;
+        //};
         // instantiate video.js
         this.player = videojs(this.videoNode, this.options).ready(function() {
             // console.log('onPlayerReady', this);
@@ -52,4 +56,4 @@ export default class VideoPlayer extends React.Component {
             </div>
         );
     }
-}*/
+}

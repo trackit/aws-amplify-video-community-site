@@ -6,7 +6,7 @@ import { withAuthenticator } from 'aws-amplify-react';
 import awsmobile from "../../aws-exports";
 import awsvideoconfig from "../../aws-video-exports";
 import {uploadVideo, getFiles} from "../../shared/components/VodStorage"
-import {deleteThumbnailObject, deleteVideoObject, deleteVodAsset} from "../../graphql/mutations";
+import {deleteVideoObject, deleteVodAsset} from "../../graphql/mutations";
 import {NavBar} from "../../shared/components";
 import {ListVodAssetsQuery, vodAsset} from "../../API";
 import {GraphQLResult} from "@aws-amplify/api-graphql";
@@ -90,15 +90,15 @@ const Dashboard = () => {
                 if (groupsData !== undefined)
                     setGroups(groupsData)
             })
-        Storage.configure({
-            AWSS3: {
-                bucket: awsvideoconfig.awsInputVideo,
-                region: awsmobile.aws_project_region,
-                customPrefix: {
-                    public: ''
-                }
-            },
-        });
+//        Storage.configure({
+//            AWSS3: {
+//                bucket: awsvideoconfig.awsInputVideo,
+//                region: awsmobile.aws_project_region,
+//                customPrefix: {
+//                    public: ''
+//                }
+//            },
+//        });
     }, [])
 
     const [vodAssets, setVodAssets] = useState([])
@@ -118,16 +118,16 @@ const Dashboard = () => {
                         deleteVodAssetQuery
                             .then((data: any) => {
                                 API.graphql({query: deleteVideoObject, variables: {input: {id: asset.video?.id}}})
-                                API.graphql({query: deleteThumbnailObject, variables: {input: {id: asset.video?.id}}})
+                                //API.graphql({query: deleteThumbnailObject, variables: {input: {id: asset.video?.id}}})
                                 Storage.remove(`${asset.video?.id}.mp4`, {bucket: awsvideoconfig.awsInputVideo})
                                     .then(data => console.log(data))
                                     .catch(err => console.log(err))
                                 console.log(data)
-                                Storage.remove(`thumbnails/${asset.thumbnail?.id}.jpeg`, {
-                                    bucket: awsmobile.aws_user_files_s3_bucket
-                                })
-                                    .then(data => console.log(data))
-                                    .catch(err => console.log(err))
+                                //Storage.remove(`thumbnails/${asset.thumbnail?.id}.jpeg`, {
+                                //    bucket: awsmobile.aws_user_files_s3_bucket
+                                //})
+                                //    .then(data => console.log(data))
+                                //    .catch(err => console.log(err))
                             })
                             .catch((err: any) => console.log(err))
                     }

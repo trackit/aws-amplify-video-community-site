@@ -17,11 +17,6 @@ export const createVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      thumbnail {
-        id
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -42,11 +37,6 @@ export const updateVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      thumbnail {
-        id
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -64,11 +54,6 @@ export const deleteVodAsset = /* GraphQL */ `
       video {
         id
         token
-        createdAt
-        updatedAt
-      }
-      thumbnail {
-        id
         createdAt
         updatedAt
       }
@@ -111,42 +96,6 @@ export const deleteVideoObject = /* GraphQL */ `
     deleteVideoObject(input: $input, condition: $condition) {
       id
       token
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const createThumbnailObject = /* GraphQL */ `
-  mutation CreateThumbnailObject(
-    $input: CreateThumbnailObjectInput!
-    $condition: ModelthumbnailObjectConditionInput
-  ) {
-    createThumbnailObject(input: $input, condition: $condition) {
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const updateThumbnailObject = /* GraphQL */ `
-  mutation UpdateThumbnailObject(
-    $input: UpdateThumbnailObjectInput!
-    $condition: ModelthumbnailObjectConditionInput
-  ) {
-    updateThumbnailObject(input: $input, condition: $condition) {
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const deleteThumbnailObject = /* GraphQL */ `
-  mutation DeleteThumbnailObject(
-    $input: DeleteThumbnailObjectInput!
-    $condition: ModelthumbnailObjectConditionInput
-  ) {
-    deleteThumbnailObject(input: $input, condition: $condition) {
-      id
       createdAt
       updatedAt
     }

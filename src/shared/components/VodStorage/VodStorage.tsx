@@ -1,13 +1,13 @@
 import {API, graphqlOperation, Storage} from "aws-amplify";
-import {createThumbnailObject, createVideoObject, createVodAsset} from "../../../graphql/mutations";
+import {createVideoObject, createVodAsset} from "../../../graphql/mutations";
 import {listVodAssets} from "../../../graphql/queries";
-import { uuid } from 'uuidv4';
+import { v4 as uuidv4 } from 'uuid';
 import awsvideoconfig from "../../../aws-video-exports";
 import awsmobile from "../../../aws-exports";
 import {GraphQLResult} from "@aws-amplify/api-graphql";
 
 export const uploadVideo = (title: string, description: string, vodFile: any, thumbnailFile: any) => {
-    const id = uuid()
+    const id = uuidv4()
     const videoObject = {
         input: {
             id: id,
@@ -19,9 +19,9 @@ export const uploadVideo = (title: string, description: string, vodFile: any, th
         }
     }
 
-    const createThumbnailObjectQuery = API.graphql(graphqlOperation(createThumbnailObject, thumbnailObject)) as Promise<GraphQLResult>
-    createThumbnailObjectQuery
-        .then((thbResponse: GraphQLResult) => {
+    //const createThumbnailObjectQuery = API.graphql(graphqlOperation(createThumbnailObject, thumbnailObject)) as Promise<GraphQLResult>
+    //createThumbnailObjectQuery
+    //    .then((thbResponse: GraphQLResult) => {
         const createVideoObjectQuery = API.graphql(graphqlOperation(createVideoObject, videoObject)) as Promise<GraphQLResult>
         createVideoObjectQuery
             .then((videoResponse: GraphQLResult) => {
@@ -33,33 +33,37 @@ export const uploadVideo = (title: string, description: string, vodFile: any, th
                             title: title,
                             description: description,
                             vodAssetVideoId: id,
-                            vodAssetThumbnailId: id
+//                            vodAssetThumbnailId: id
                         }
                     }
                     API.graphql(graphqlOperation(createVodAsset, videoAsset))
                     Storage.put(`${id}.${vodExtension[vodExtension.length - 1]}`, vodFile, {
-                        bucket: awsvideoconfig.awsInputVideo
+                        bucket: awsvideoconfig.awsInputVideo,
+                        region: awsmobile.aws_project_region,
+                        customPrefix: {
+                            public: ''
+                        }
                     }).then((res) => {
-                        Storage.put(`thumbnails/${id}.${thumbnailExtension[thumbnailExtension.length - 1]}`, thumbnailFile, {
-                            bucket: awsmobile.aws_user_files_s3_bucket,
-                            level: 'public',
-                            customPrefix: {
-                                public: 'thumbnails'
-                            }
-                        })
-                            .then((res) => {
-                                console.log('thumbnails res:', res)
-                            })
-                            .catch((err) => {
-                                console.log(err)
-                            })
-                        console.log(res)
+                        console.log('storage put:', res)
+                        //Storage.put(`thumbnails/${id}.${thumbnailExtension[thumbnailExtension.length - 1]}`, thumbnailFile, {
+                        //    bucket: awsmobile.aws_user_files_s3_bucket,
+                        //    level: 'public',
+                        //    customPrefix: {
+                        //        public: 'thumbnails'
+                        //    }
+                        //})
+                        //    .then((res) => {
+                        //        console.log('thumbnails res:', res)
+                        //    })
+                        //    .catch((err) => {
+                        //        console.log('thumbnail err:', err)
+                        //    })
                     }).catch((err) => {
-                        console.log(err)
+                        console.log('storage put err:', err)
                     })
             }
         })
-    })
+    //})
 }
 
 export const getFiles = async (nextToken: string) => {

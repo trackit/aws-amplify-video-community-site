@@ -14,11 +14,6 @@ export const getVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      thumbnail {
-        id
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -38,11 +33,6 @@ export const listVodAssets = /* GraphQL */ `
         video {
           id
           token
-          createdAt
-          updatedAt
-        }
-        thumbnail {
-          id
           createdAt
           updatedAt
         }
@@ -73,35 +63,6 @@ export const listVideoObjects = /* GraphQL */ `
       items {
         id
         token
-        createdAt
-        updatedAt
-      }
-      nextToken
-    }
-  }
-`;
-export const getThumbnailObject = /* GraphQL */ `
-  query GetThumbnailObject($id: ID!) {
-    getThumbnailObject(id: $id) {
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const listThumbnailObjects = /* GraphQL */ `
-  query ListThumbnailObjects(
-    $filter: ModelthumbnailObjectFilterInput
-    $limit: Int
-    $nextToken: String
-  ) {
-    listThumbnailObjects(
-      filter: $filter
-      limit: $limit
-      nextToken: $nextToken
-    ) {
-      items {
-        id
         createdAt
         updatedAt
       }

@@ -14,11 +14,6 @@ export const onCreateVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      thumbnail {
-        id
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -36,11 +31,6 @@ export const onUpdateVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      thumbnail {
-        id
-        createdAt
-        updatedAt
-      }
       createdAt
       updatedAt
     }
@@ -55,11 +45,6 @@ export const onDeleteVodAsset = /* GraphQL */ `
       video {
         id
         token
-        createdAt
-        updatedAt
-      }
-      thumbnail {
-        id
         createdAt
         updatedAt
       }
@@ -93,33 +78,6 @@ export const onDeleteVideoObject = /* GraphQL */ `
     onDeleteVideoObject {
       id
       token
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onCreateThumbnailObject = /* GraphQL */ `
-  subscription OnCreateThumbnailObject {
-    onCreateThumbnailObject {
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onUpdateThumbnailObject = /* GraphQL */ `
-  subscription OnUpdateThumbnailObject {
-    onUpdateThumbnailObject {
-      id
-      createdAt
-      updatedAt
-    }
-  }
-`;
-export const onDeleteThumbnailObject = /* GraphQL */ `
-  subscription OnDeleteThumbnailObject {
-    onDeleteThumbnailObject {
-      id
       createdAt
       updatedAt
     }

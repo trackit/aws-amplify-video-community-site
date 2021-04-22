@@ -4,7 +4,7 @@
         "precedence": 1,
         "customPolicies": [
             {
-                "PolicyName": "awsamplifyvideoedu37f1643b-admin-group-policy",
+                "PolicyName": "trackiteduwebsitec7c6e003-admin-group-policy",
                 "PolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [
@@ -15,7 +15,7 @@
                                 "s3:PutObject",
                                 "s3:DeleteObject"
                             ],
-                            "Resource": "arn:aws:s3:::awsvodtrackitedu-prod-input-jr6z9egx/*"
+                            "Resource": "arn:aws:s3:::trackitvodedu-prod-input-mrdyskth/*"
                         }
                     ]
                 }

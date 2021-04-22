@@ -1,8 +1,8 @@
 {
-    "identityPoolName": "awsamplifyvideoedu37f1643b_identitypool_37f1643b",
-    "allowUnauthenticatedIdentities": true,
-    "resourceNameTruncated": "awsamp37f1643b",
-    "userPoolName": "awsamplifyvideoedu37f1643b_userpool_37f1643b",
+    "identityPoolName": "trackiteduwebsitec7c6e003_identitypool_c7c6e003",
+    "allowUnauthenticatedIdentities": false,
+    "resourceNameTruncated": "trackic7c6e003",
+    "userPoolName": "trackiteduwebsitec7c6e003_userpool_c7c6e003",
     "autoVerifiedAttributes": [
         "email"
     ],
@@ -28,10 +28,10 @@
     "userpoolClientReadAttributes": [
         "email"
     ],
-    "userpoolClientLambdaRole": "awsamp37f1643b_userpoolclient_lambda_role",
+    "userpoolClientLambdaRole": "trackic7c6e003_userpoolclient_lambda_role",
     "userpoolClientSetAttributes": false,
-    "sharedId": "37f1643b",
-    "resourceName": "awsamplifyvideoedu37f1643b",
+    "sharedId": "c7c6e003",
+    "resourceName": "trackiteduwebsitec7c6e003",
     "authSelections": "identityPoolAndUserPool",
     "authRoleArn": {
         "Fn::GetAtt": [
