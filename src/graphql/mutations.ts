@@ -11,9 +11,21 @@ export const createVodAsset = /* GraphQL */ `
       id
       title
       description
+      highlighted
       video {
         id
         token
+        createdAt
+        updatedAt
+      }
+      thumbnail {
+        id
+        createdAt
+        updatedAt
+      }
+      section {
+        id
+        label
         createdAt
         updatedAt
       }
@@ -31,9 +43,21 @@ export const updateVodAsset = /* GraphQL */ `
       id
       title
       description
+      highlighted
       video {
         id
         token
+        createdAt
+        updatedAt
+      }
+      thumbnail {
+        id
+        createdAt
+        updatedAt
+      }
+      section {
+        id
+        label
         createdAt
         updatedAt
       }
@@ -51,9 +75,21 @@ export const deleteVodAsset = /* GraphQL */ `
       id
       title
       description
+      highlighted
       video {
         id
         token
+        createdAt
+        updatedAt
+      }
+      thumbnail {
+        id
+        createdAt
+        updatedAt
+      }
+      section {
+        id
+        label
         createdAt
         updatedAt
       }
@@ -96,6 +132,81 @@ export const deleteVideoObject = /* GraphQL */ `
     deleteVideoObject(input: $input, condition: $condition) {
       id
       token
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createThumbnailObject = /* GraphQL */ `
+  mutation CreateThumbnailObject(
+    $input: CreateThumbnailObjectInput!
+    $condition: ModelthumbnailObjectConditionInput
+  ) {
+    createThumbnailObject(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateThumbnailObject = /* GraphQL */ `
+  mutation UpdateThumbnailObject(
+    $input: UpdateThumbnailObjectInput!
+    $condition: ModelthumbnailObjectConditionInput
+  ) {
+    updateThumbnailObject(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteThumbnailObject = /* GraphQL */ `
+  mutation DeleteThumbnailObject(
+    $input: DeleteThumbnailObjectInput!
+    $condition: ModelthumbnailObjectConditionInput
+  ) {
+    deleteThumbnailObject(input: $input, condition: $condition) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createSection = /* GraphQL */ `
+  mutation CreateSection(
+    $input: CreateSectionInput!
+    $condition: ModelsectionConditionInput
+  ) {
+    createSection(input: $input, condition: $condition) {
+      id
+      label
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateSection = /* GraphQL */ `
+  mutation UpdateSection(
+    $input: UpdateSectionInput!
+    $condition: ModelsectionConditionInput
+  ) {
+    updateSection(input: $input, condition: $condition) {
+      id
+      label
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteSection = /* GraphQL */ `
+  mutation DeleteSection(
+    $input: DeleteSectionInput!
+    $condition: ModelsectionConditionInput
+  ) {
+    deleteSection(input: $input, condition: $condition) {
+      id
+      label
       createdAt
       updatedAt
     }

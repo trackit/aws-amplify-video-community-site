@@ -4,7 +4,7 @@
         "precedence": 1,
         "customPolicies": [
             {
-                "PolicyName": "trackiteduwebsitec7c6e003-admin-group-policy",
+                "PolicyName": "trackiteduwebsite9e8dd199-admin-group-policy",
                 "PolicyDocument": {
                     "Version": "2012-10-17",
                     "Statement": [
@@ -15,7 +15,7 @@
                                 "s3:PutObject",
                                 "s3:DeleteObject"
                             ],
-                            "Resource": "arn:aws:s3:::trackitvodedu-prod-input-mrdyskth/*"
+                            "Resource": "arn:aws:s3:::trackiteduvod-prod-input-csapbbbn/*"
                         }
                     ]
                 }

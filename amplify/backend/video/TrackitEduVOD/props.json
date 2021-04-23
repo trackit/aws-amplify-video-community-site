@@ -1,0 +1,44 @@
+{
+    "shared": {
+        "resourceName": "TrackitEduVOD"
+    },
+    "template": {
+        "name": "Amplify_Video_HLS.json"
+    },
+    "contentDeliveryNetwork": {
+        "signedKey": true,
+        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsPF6k8GEORlpm4+3xVsJ\\naX/SKiH9nQZJ2onBm5VPCarJyz9K/ndbBPau3sb/Xedrs133XznYpnSKi0PlHlwQ\\nP937er1RHzw2f65uzNR7bJgo4fQJj1vJAllCnrdLzsIL8wiZ/K32ld7QYbPwvWxO\\nf3Q15j5Y6hxvSL0bKeiLa6EF33NnzWorpt39gcR+jFzry2u/JSx/aNQYRRuo0azq\\nQIfX+mO/lRpVWN1r0a/vyjjhdr05JNsDFWJAgz/rdD3fzJVz71wjmzu7tXulSJSh\\n2n7GoMH9pldIP5y/eflGC2GOlUC7wEcJ75zPmMdKop+SSO8fNEiw2wgQl4R2jnpv\\nkwIDAQAB\\n-----END PUBLIC KEY-----\\n",
+        "rPublicName": "rCloudFrontPublicKey96cx85ic",
+        "publicKeyName": "TrackitEduVOD-prod-publickey-96cx85ic",
+        "secretPem": "TrackitEduVOD-prod-pem-96cx85ic",
+        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-prod-pem-96cx85ic-lyEPQ7",
+        "functionName": "TrackitEduVOD-prod-tokenGen",
+        "enableDistribution": true
+    },
+    "parameters": {
+        "authRoleName": {
+            "Ref": "AuthRoleName"
+        },
+        "GraphQLAPIId": {
+            "Fn::GetAtt": [
+                "apiTrackitEduAPI",
+                "Outputs.GraphQLAPIIdOutput"
+            ]
+        },
+        "GraphQLEndpoint": {
+            "Fn::GetAtt": [
+                "apiTrackitEduAPI",
+                "Outputs.GraphQLAPIEndpointOutput"
+            ]
+        }
+    },
+    "permissions": {
+        "permissionSchema": [
+            "admin"
+        ]
+    },
+    "cms": {
+        "overrideSchema": true,
+        "editAPI": true
+    }
+}

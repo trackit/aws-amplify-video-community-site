@@ -1,23 +1,23 @@
 {
     "AWSTemplateFormatVersion": "2010-09-09",
     "Parameters": {
-        "authtrackiteduwebsitec7c6e003UserPoolId": {
+        "authtrackiteduwebsite9e8dd199UserPoolId": {
             "Type": "String",
-            "Default": "authtrackiteduwebsitec7c6e003UserPoolId"
+            "Default": "authtrackiteduwebsite9e8dd199UserPoolId"
         },
         
-        "authtrackiteduwebsitec7c6e003IdentityPoolId": {
+        "authtrackiteduwebsite9e8dd199IdentityPoolId": {
             "Type": "String",
-            "Default": "authtrackiteduwebsitec7c6e003IdentityPoolId"
+            "Default": "authtrackiteduwebsite9e8dd199IdentityPoolId"
         },
         
-        "authtrackiteduwebsitec7c6e003AppClientID": {
+        "authtrackiteduwebsite9e8dd199AppClientID": {
             "Type": "String",
-            "Default": "authtrackiteduwebsitec7c6e003AppClientID"
+            "Default": "authtrackiteduwebsite9e8dd199AppClientID"
         },
-        "authtrackiteduwebsitec7c6e003AppClientIDWeb": {
+        "authtrackiteduwebsite9e8dd199AppClientIDWeb": {
             "Type": "String",
-            "Default": "authtrackiteduwebsitec7c6e003AppClientIDWeb"
+            "Default": "authtrackiteduwebsite9e8dd199AppClientIDWeb"
         },
         "AuthRoleArn": {
             "Type": "String"
@@ -55,7 +55,7 @@
               },
               
               "UserPoolId" : {
-                "Ref": "authtrackiteduwebsitec7c6e003UserPoolId"
+                "Ref": "authtrackiteduwebsite9e8dd199UserPoolId"
               }
             }
         },
@@ -68,7 +68,7 @@
                         "",
                         [
                           {
-                            "Ref": "authtrackiteduwebsitec7c6e003UserPoolId"
+                            "Ref": "authtrackiteduwebsite9e8dd199UserPoolId"
                           },
                           "-AdminGroupRole"
                         ]
@@ -85,7 +85,7 @@
                             },
                             "Action": "sts:AssumeRoleWithWebIdentity",
                             "Condition": {
-                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authtrackiteduwebsitec7c6e003IdentityPoolId"}},
+                              "StringEquals": {"cognito-identity.amazonaws.com:aud": {"Ref":"authtrackiteduwebsite9e8dd199IdentityPoolId"}},
                               "ForAnyValue:StringLike": {"cognito-identity.amazonaws.com:amr": "authenticated"}
                             }
                         }
@@ -93,7 +93,7 @@
                 },
                 "Policies": [
     {
-        "PolicyName": "trackiteduwebsitec7c6e003-admin-group-policy",
+        "PolicyName": "trackiteduwebsite9e8dd199-admin-group-policy",
         "PolicyDocument": {
             "Version": "2012-10-17",
             "Statement": [
@@ -104,7 +104,7 @@
                         "s3:PutObject",
                         "s3:DeleteObject"
                     ],
-                    "Resource": "arn:aws:s3:::trackitvodedu-prod-input-mrdyskth/*"
+                    "Resource": "arn:aws:s3:::trackiteduvod-prod-input-csapbbbn/*"
                 }
             ]
         }
@@ -131,7 +131,7 @@
                                 "",
                                 [
 
-                                  "trackiteduwebsitec7c6e003",
+                                  "trackiteduwebsite9e8dd199",
                                   "-ExecutionRole-",
                                   {
                                     "Ref": "env"
@@ -290,16 +290,16 @@
                     "Ref": "UnauthRoleArn"
                 },
                 "identityPoolId": {
-                    "Ref": "authtrackiteduwebsitec7c6e003IdentityPoolId"
+                    "Ref": "authtrackiteduwebsite9e8dd199IdentityPoolId"
                 },
                 "userPoolId": {
-                    "Ref": "authtrackiteduwebsitec7c6e003UserPoolId"
+                    "Ref": "authtrackiteduwebsite9e8dd199UserPoolId"
                 },
                 "appClientIDWeb": {
-                    "Ref": "authtrackiteduwebsitec7c6e003AppClientIDWeb"
+                    "Ref": "authtrackiteduwebsite9e8dd199AppClientIDWeb"
                 },
                 "appClientID": {
-                    "Ref": "authtrackiteduwebsitec7c6e003AppClientID"
+                    "Ref": "authtrackiteduwebsite9e8dd199AppClientID"
                 },
                 "region": {
                     "Ref": "AWS::Region"

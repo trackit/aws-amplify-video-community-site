@@ -1,6 +1,6 @@
 import React, {useEffect, useState} from "react";
 import { withAuthenticator } from 'aws-amplify-react';
-import {getFiles} from "../../shared/components/VodStorage";
+import {listVodFiles} from "../../shared/components/VodStorage";
 import {Storage} from "aws-amplify";
 import awsmobile from "../../aws-exports";
 import './VodApp.css'
@@ -14,10 +14,10 @@ const ThumbnailCard = ({asset}: any, key: number) => {
     useEffect(() => {
         if (asset.thumbnail) {
             console.log(asset.thumbnail.id)
-            /*Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
+            Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
                 bucket: awsmobile.aws_user_files_s3_bucket,
                 customPrefix: {
-                    public: 'thumbnails'
+                    public: ''
                 }
             })
                 .then((data: any) => {
@@ -26,7 +26,7 @@ const ThumbnailCard = ({asset}: any, key: number) => {
                 })
                 .catch((err) => {
                     console.log(err)
-                })*/
+                })
         }
     }, [])
 
@@ -63,7 +63,7 @@ const VodApp = () => {
     const [nextToken, setNextToken] = useState('')
 
     useEffect(() => {
-        getFiles(nextToken)
+        listVodFiles(nextToken)
             .then((data: any) => {
                 console.log(data.data.listVodAssets)
                 setNextToken(data.data.nextToken)

@@ -6,12 +6,16 @@ export type CreateVodAssetInput = {
   id?: string | null,
   title: string,
   description: string,
+  highlighted: boolean,
   vodAssetVideoId?: string | null,
+  vodAssetThumbnailId?: string | null,
+  vodAssetSectionId?: string | null,
 };
 
 export type ModelvodAssetConditionInput = {
   title?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  highlighted?: ModelBooleanInput | null,
   and?: Array< ModelvodAssetConditionInput | null > | null,
   or?: Array< ModelvodAssetConditionInput | null > | null,
   not?: ModelvodAssetConditionInput | null,
@@ -57,12 +61,22 @@ export type ModelSizeInput = {
   between?: Array< number | null > | null,
 };
 
+export type ModelBooleanInput = {
+  ne?: boolean | null,
+  eq?: boolean | null,
+  attributeExists?: boolean | null,
+  attributeType?: ModelAttributeTypes | null,
+};
+
 export type vodAsset = {
   __typename: "vodAsset",
   id?: string,
   title?: string,
   description?: string,
+  highlighted?: boolean,
   video?: videoObject,
+  thumbnail?: thumbnailObject,
+  section?: section,
   createdAt?: string,
   updatedAt?: string,
 };
@@ -75,11 +89,29 @@ export type videoObject = {
   updatedAt?: string,
 };
 
+export type thumbnailObject = {
+  __typename: "thumbnailObject",
+  id?: string,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
+export type section = {
+  __typename: "section",
+  id?: string,
+  label?: string,
+  createdAt?: string,
+  updatedAt?: string,
+};
+
 export type UpdateVodAssetInput = {
   id: string,
   title?: string | null,
   description?: string | null,
+  highlighted?: boolean | null,
   vodAssetVideoId?: string | null,
+  vodAssetThumbnailId?: string | null,
+  vodAssetSectionId?: string | null,
 };
 
 export type DeleteVodAssetInput = {
@@ -107,10 +139,50 @@ export type DeleteVideoObjectInput = {
   id?: string | null,
 };
 
+export type CreateThumbnailObjectInput = {
+  id?: string | null,
+};
+
+export type ModelthumbnailObjectConditionInput = {
+  and?: Array< ModelthumbnailObjectConditionInput | null > | null,
+  or?: Array< ModelthumbnailObjectConditionInput | null > | null,
+  not?: ModelthumbnailObjectConditionInput | null,
+};
+
+export type UpdateThumbnailObjectInput = {
+  id: string,
+};
+
+export type DeleteThumbnailObjectInput = {
+  id?: string | null,
+};
+
+export type CreateSectionInput = {
+  id?: string | null,
+  label: string,
+};
+
+export type ModelsectionConditionInput = {
+  label?: ModelStringInput | null,
+  and?: Array< ModelsectionConditionInput | null > | null,
+  or?: Array< ModelsectionConditionInput | null > | null,
+  not?: ModelsectionConditionInput | null,
+};
+
+export type UpdateSectionInput = {
+  id: string,
+  label?: string | null,
+};
+
+export type DeleteSectionInput = {
+  id?: string | null,
+};
+
 export type ModelvodAssetFilterInput = {
   id?: ModelIDInput | null,
   title?: ModelStringInput | null,
   description?: ModelStringInput | null,
+  highlighted?: ModelBooleanInput | null,
   and?: Array< ModelvodAssetFilterInput | null > | null,
   or?: Array< ModelvodAssetFilterInput | null > | null,
   not?: ModelvodAssetFilterInput | null,
@@ -152,6 +224,33 @@ export type ModelvideoObjectConnection = {
   nextToken?: string | null,
 };
 
+export type ModelthumbnailObjectFilterInput = {
+  id?: ModelIDInput | null,
+  and?: Array< ModelthumbnailObjectFilterInput | null > | null,
+  or?: Array< ModelthumbnailObjectFilterInput | null > | null,
+  not?: ModelthumbnailObjectFilterInput | null,
+};
+
+export type ModelthumbnailObjectConnection = {
+  __typename: "ModelthumbnailObjectConnection",
+  items?:  Array<thumbnailObject | null > | null,
+  nextToken?: string | null,
+};
+
+export type ModelsectionFilterInput = {
+  id?: ModelIDInput | null,
+  label?: ModelStringInput | null,
+  and?: Array< ModelsectionFilterInput | null > | null,
+  or?: Array< ModelsectionFilterInput | null > | null,
+  not?: ModelsectionFilterInput | null,
+};
+
+export type ModelsectionConnection = {
+  __typename: "ModelsectionConnection",
+  items?:  Array<section | null > | null,
+  nextToken?: string | null,
+};
+
 export type CreateVodAssetMutationVariables = {
   input?: CreateVodAssetInput,
   condition?: ModelvodAssetConditionInput | null,
@@ -163,10 +262,24 @@ export type CreateVodAssetMutation = {
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -186,10 +299,24 @@ export type UpdateVodAssetMutation = {
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -209,10 +336,24 @@ export type DeleteVodAssetMutation = {
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -266,6 +407,93 @@ export type DeleteVideoObjectMutation = {
   } | null,
 };
 
+export type CreateThumbnailObjectMutationVariables = {
+  input?: CreateThumbnailObjectInput,
+  condition?: ModelthumbnailObjectConditionInput | null,
+};
+
+export type CreateThumbnailObjectMutation = {
+  createThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateThumbnailObjectMutationVariables = {
+  input?: UpdateThumbnailObjectInput,
+  condition?: ModelthumbnailObjectConditionInput | null,
+};
+
+export type UpdateThumbnailObjectMutation = {
+  updateThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteThumbnailObjectMutationVariables = {
+  input?: DeleteThumbnailObjectInput,
+  condition?: ModelthumbnailObjectConditionInput | null,
+};
+
+export type DeleteThumbnailObjectMutation = {
+  deleteThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type CreateSectionMutationVariables = {
+  input?: CreateSectionInput,
+  condition?: ModelsectionConditionInput | null,
+};
+
+export type CreateSectionMutation = {
+  createSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type UpdateSectionMutationVariables = {
+  input?: UpdateSectionInput,
+  condition?: ModelsectionConditionInput | null,
+};
+
+export type UpdateSectionMutation = {
+  updateSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type DeleteSectionMutationVariables = {
+  input?: DeleteSectionInput,
+  condition?: ModelsectionConditionInput | null,
+};
+
+export type DeleteSectionMutation = {
+  deleteSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
 export type GetVodAssetQueryVariables = {
   id?: string,
 };
@@ -276,10 +504,24 @@ export type GetVodAssetQuery = {
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -302,10 +544,24 @@ export type ListVodAssetsQuery = {
       id: string,
       title: string,
       description: string,
+      highlighted: boolean,
       video?:  {
         __typename: "videoObject",
         id: string,
         token?: string | null,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      thumbnail?:  {
+        __typename: "thumbnailObject",
+        id: string,
+        createdAt: string,
+        updatedAt: string,
+      } | null,
+      section?:  {
+        __typename: "section",
+        id: string,
+        label: string,
         createdAt: string,
         updatedAt: string,
       } | null,
@@ -350,16 +606,96 @@ export type ListVideoObjectsQuery = {
   } | null,
 };
 
+export type GetThumbnailObjectQueryVariables = {
+  id?: string,
+};
+
+export type GetThumbnailObjectQuery = {
+  getThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListThumbnailObjectsQueryVariables = {
+  filter?: ModelthumbnailObjectFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListThumbnailObjectsQuery = {
+  listThumbnailObjects?:  {
+    __typename: "ModelthumbnailObjectConnection",
+    items?:  Array< {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
+export type GetSectionQueryVariables = {
+  id?: string,
+};
+
+export type GetSectionQuery = {
+  getSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type ListSectionsQueryVariables = {
+  filter?: ModelsectionFilterInput | null,
+  limit?: number | null,
+  nextToken?: string | null,
+};
+
+export type ListSectionsQuery = {
+  listSections?:  {
+    __typename: "ModelsectionConnection",
+    items?:  Array< {
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null > | null,
+    nextToken?: string | null,
+  } | null,
+};
+
 export type OnCreateVodAssetSubscription = {
   onCreateVodAsset?:  {
     __typename: "vodAsset",
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -374,10 +710,24 @@ export type OnUpdateVodAssetSubscription = {
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -392,10 +742,24 @@ export type OnDeleteVodAssetSubscription = {
     id: string,
     title: string,
     description: string,
+    highlighted: boolean,
     video?:  {
       __typename: "videoObject",
       id: string,
       token?: string | null,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    thumbnail?:  {
+      __typename: "thumbnailObject",
+      id: string,
+      createdAt: string,
+      updatedAt: string,
+    } | null,
+    section?:  {
+      __typename: "section",
+      id: string,
+      label: string,
       createdAt: string,
       updatedAt: string,
     } | null,
@@ -429,6 +793,63 @@ export type OnDeleteVideoObjectSubscription = {
     __typename: "videoObject",
     id: string,
     token?: string | null,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateThumbnailObjectSubscription = {
+  onCreateThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateThumbnailObjectSubscription = {
+  onUpdateThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteThumbnailObjectSubscription = {
+  onDeleteThumbnailObject?:  {
+    __typename: "thumbnailObject",
+    id: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnCreateSectionSubscription = {
+  onCreateSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnUpdateSectionSubscription = {
+  onUpdateSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
+    createdAt: string,
+    updatedAt: string,
+  } | null,
+};
+
+export type OnDeleteSectionSubscription = {
+  onDeleteSection?:  {
+    __typename: "section",
+    id: string,
+    label: string,
     createdAt: string,
     updatedAt: string,
   } | null,

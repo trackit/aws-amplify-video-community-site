@@ -8,9 +8,21 @@ export const getVodAsset = /* GraphQL */ `
       id
       title
       description
+      highlighted
       video {
         id
         token
+        createdAt
+        updatedAt
+      }
+      thumbnail {
+        id
+        createdAt
+        updatedAt
+      }
+      section {
+        id
+        label
         createdAt
         updatedAt
       }
@@ -30,9 +42,21 @@ export const listVodAssets = /* GraphQL */ `
         id
         title
         description
+        highlighted
         video {
           id
           token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        section {
+          id
+          label
           createdAt
           updatedAt
         }
@@ -63,6 +87,62 @@ export const listVideoObjects = /* GraphQL */ `
       items {
         id
         token
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getThumbnailObject = /* GraphQL */ `
+  query GetThumbnailObject($id: ID!) {
+    getThumbnailObject(id: $id) {
+      id
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listThumbnailObjects = /* GraphQL */ `
+  query ListThumbnailObjects(
+    $filter: ModelthumbnailObjectFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listThumbnailObjects(
+      filter: $filter
+      limit: $limit
+      nextToken: $nextToken
+    ) {
+      items {
+        id
+        createdAt
+        updatedAt
+      }
+      nextToken
+    }
+  }
+`;
+export const getSection = /* GraphQL */ `
+  query GetSection($id: ID!) {
+    getSection(id: $id) {
+      id
+      label
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const listSections = /* GraphQL */ `
+  query ListSections(
+    $filter: ModelsectionFilterInput
+    $limit: Int
+    $nextToken: String
+  ) {
+    listSections(filter: $filter, limit: $limit, nextToken: $nextToken) {
+      items {
+        id
+        label
         createdAt
         updatedAt
       }

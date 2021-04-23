@@ -1,6 +1,6 @@
 {
   "auth": {
-    "trackiteduwebsitec7c6e003": {
+    "trackiteduwebsite9e8dd199": {
       "service": "Cognito",
       "providerPlugin": "awscloudformation",
       "dependsOn": [],
@@ -12,7 +12,7 @@
       "dependsOn": [
         {
           "category": "auth",
-          "resourceName": "trackiteduwebsitec7c6e003",
+          "resourceName": "trackiteduwebsite9e8dd199",
           "attributes": [
             "UserPoolId",
             "AppClientIDWeb",
@@ -32,7 +32,7 @@
           "defaultAuthentication": {
             "authenticationType": "AMAZON_COGNITO_USER_POOLS",
             "userPoolConfig": {
-              "userPoolId": "authtrackiteduwebsitec7c6e003"
+              "userPoolId": "authtrackiteduwebsite9e8dd199"
             }
           },
           "additionalAuthenticationProviders": []
@@ -41,10 +41,32 @@
     }
   },
   "video": {
-    "TrackitVodEdu": {
+    "TrackitEduVOD": {
       "service": "video",
       "serviceType": "video-on-demand",
       "providerPlugin": "awscloudformation"
+    }
+  },
+  "storage": {
+    "TrackitEduAssets": {
+      "service": "S3",
+      "providerPlugin": "awscloudformation",
+      "dependsOn": [
+        {
+          "category": "auth",
+          "resourceName": "trackiteduwebsite9e8dd199",
+          "attributes": [
+            "UserPoolId"
+          ]
+        },
+        {
+          "category": "auth",
+          "resourceName": "userPoolGroups",
+          "attributes": [
+            "AdminGroupRole"
+          ]
+        }
+      ]
     }
   }
 }

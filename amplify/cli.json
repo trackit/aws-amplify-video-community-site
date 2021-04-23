@@ -4,7 +4,7 @@
       "addmissingownerfields": true,
       "validatetypenamereservedwords": true,
       "useexperimentalpipelinedtransformer": false,
-      "enableiterativegsiupdates": true,
+      "enableiterativegsiupdates": false,
       "secondarykeyasgsi": true,
       "skipoverridemutationinputtypes": true
     },
