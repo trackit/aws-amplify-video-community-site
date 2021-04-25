@@ -3,7 +3,7 @@ import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
 import {getVodAsset} from "../../graphql/queries";
 import {API} from "aws-amplify";
-import {NavBar} from "../../shared/components";
+import {NavBar, VideoPlayer} from "../../shared/components";
 import awsvideoconfig from "../../aws-video-exports";
 import './VideoPage.css'
 import {GraphQLResult} from "@aws-amplify/api-graphql";
@@ -22,9 +22,9 @@ const VideoCard = ({asset}: any) => {
     return (
         <div className='video'>
             <div className='video-wrapper'>
-                {/*<VideoPlayer
+                {<VideoPlayer
                     {...videoJsOptions}
-                />*/}
+                />}
             </div>
             <h2>{asset.title}</h2>
             <p>{asset.description}</p>
