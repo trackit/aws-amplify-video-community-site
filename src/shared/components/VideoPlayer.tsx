@@ -22,6 +22,7 @@ export default class VideoPlayer extends React.Component<any> {
 
     componentDidMount() {
         const { src } = this.props.sources[0]
+        console.log("src:", this.props.token)
         //  instantiate video.js
         this.player = videojs(this.videoNode, this.options).ready(function() {
             console.log('onPlayerReady', this);
@@ -50,13 +51,9 @@ export default class VideoPlayer extends React.Component<any> {
     // see https://github.com/videojs/video.js/pull/3856
     render() {
         return (
-            <div className="c-player video-player">
-                <div className="c-player__screen" data-vjs-player="true">
-                    <video ref={(node: HTMLVideoElement) => this.videoNode = node} className="vjs-fluid video-js vjs-default-skin vjs-big-play-centered" />
-                </div>
-                <div className="c-player__controls">
-                    <button>Play</button>
-                    <button>Pause</button>
+            <div className='video-player'>
+                <div data-vjs-player>
+                    <video ref={(node: HTMLVideoElement) => { this.videoNode = node; }} className="vjs-fluid video-js vjs-default-skin vjs-big-play-centered"/>
                 </div>
             </div>
         );
