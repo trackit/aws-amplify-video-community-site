@@ -9,6 +9,7 @@ export type CreateVodAssetInput = {
   highlighted: boolean,
   vodAssetVideoId?: string | null,
   vodAssetThumbnailId?: string | null,
+  vodAssetSectionId?: string | null,
 };
 
 export type ModelvodAssetConditionInput = {
@@ -75,7 +76,7 @@ export type vodAsset = {
   highlighted?: boolean,
   video?: videoObject,
   thumbnail?: thumbnailObject,
-  section?: ModelsectionConnection,
+  section?: section,
   createdAt?: string,
   updatedAt?: string,
 };
@@ -95,12 +96,6 @@ export type thumbnailObject = {
   updatedAt?: string,
 };
 
-export type ModelsectionConnection = {
-  __typename: "ModelsectionConnection",
-  items?:  Array<section | null > | null,
-  nextToken?: string | null,
-};
-
 export type section = {
   __typename: "section",
   id?: string,
@@ -116,6 +111,7 @@ export type UpdateVodAssetInput = {
   highlighted?: boolean | null,
   vodAssetVideoId?: string | null,
   vodAssetThumbnailId?: string | null,
+  vodAssetSectionId?: string | null,
 };
 
 export type DeleteVodAssetInput = {
@@ -164,7 +160,6 @@ export type DeleteThumbnailObjectInput = {
 export type CreateSectionInput = {
   id?: string | null,
   label: string,
-  vodAssetSectionId?: string | null,
 };
 
 export type ModelsectionConditionInput = {
@@ -177,7 +172,6 @@ export type ModelsectionConditionInput = {
 export type UpdateSectionInput = {
   id: string,
   label?: string | null,
-  vodAssetSectionId?: string | null,
 };
 
 export type DeleteSectionInput = {
@@ -251,6 +245,12 @@ export type ModelsectionFilterInput = {
   not?: ModelsectionFilterInput | null,
 };
 
+export type ModelsectionConnection = {
+  __typename: "ModelsectionConnection",
+  items?:  Array<section | null > | null,
+  nextToken?: string | null,
+};
+
 export type CreateVodAssetMutationVariables = {
   input?: CreateVodAssetInput,
   condition?: ModelvodAssetConditionInput | null,
@@ -277,15 +277,11 @@ export type CreateVodAssetMutation = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -318,15 +314,11 @@ export type UpdateVodAssetMutation = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -359,15 +351,11 @@ export type DeleteVodAssetMutation = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -531,15 +519,11 @@ export type GetVodAssetQuery = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -575,8 +559,11 @@ export type ListVodAssetsQuery = {
         updatedAt: string,
       } | null,
       section?:  {
-        __typename: "ModelsectionConnection",
-        nextToken?: string | null,
+        __typename: "section",
+        id: string,
+        label: string,
+        createdAt: string,
+        updatedAt: string,
       } | null,
       createdAt: string,
       updatedAt: string,
@@ -706,15 +693,11 @@ export type OnCreateVodAssetSubscription = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -742,15 +725,11 @@ export type OnUpdateVodAssetSubscription = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
@@ -778,15 +757,11 @@ export type OnDeleteVodAssetSubscription = {
       updatedAt: string,
     } | null,
     section?:  {
-      __typename: "ModelsectionConnection",
-      items?:  Array< {
-        __typename: "section",
-        id: string,
-        label: string,
-        createdAt: string,
-        updatedAt: string,
-      } | null > | null,
-      nextToken?: string | null,
+      __typename: "section",
+      id: string,
+      label: string,
+      createdAt: string,
+      updatedAt: string,
     } | null,
     createdAt: string,
     updatedAt: string,
