@@ -21,10 +21,13 @@ export const onCreateVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -50,10 +53,13 @@ export const onUpdateVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -79,10 +85,13 @@ export const onDeleteVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt

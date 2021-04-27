@@ -24,10 +24,13 @@ export const createVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -56,10 +59,13 @@ export const updateVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -88,10 +94,13 @@ export const deleteVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt

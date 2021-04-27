@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {useHistory} from 'react-router-dom';
 import Amplify, {Auth, Storage, API, graphqlOperation} from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 
@@ -8,11 +7,9 @@ import awsvideoconfig from "../../aws-video-exports";
 import {uploadVideo, listVodFiles, listVodSections} from "../../shared/components/VodStorage"
 import {deleteThumbnailObject, deleteVideoObject, deleteVodAsset} from "../../graphql/mutations";
 import {NavBar} from "../../shared/components";
-import {ListVodAssetsQuery, vodAsset} from "../../API";
+import {vodAsset} from "../../API";
 import {GraphQLResult} from "@aws-amplify/api-graphql";
-import {listSections} from "../../graphql/queries";
 import {createVodSection} from "../../shared/components/VodStorage/VodStorage";
-import {strict} from "assert";
 
 Amplify.configure(awsmobile)
 

@@ -21,10 +21,13 @@ export const getVodAsset = /* GraphQL */ `
         updatedAt
       }
       section {
-        id
-        label
-        createdAt
-        updatedAt
+        items {
+          id
+          label
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -55,10 +58,7 @@ export const listVodAssets = /* GraphQL */ `
           updatedAt
         }
         section {
-          id
-          label
-          createdAt
-          updatedAt
+          nextToken
         }
         createdAt
         updatedAt
