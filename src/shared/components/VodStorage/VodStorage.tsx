@@ -13,7 +13,7 @@ import awsmobile from "../../../aws-exports";
 import {GraphQLResult} from "@aws-amplify/api-graphql";
 import {CreateSectionInput, DeleteSectionInput} from "../../../API";
 
-export const uploadVideo = (title: string, description: string, vodFile: any, thumbnailFile: any, highlighted: boolean) => {
+export const uploadVideo = (title: string, description: string, vodFile: any, thumbnailFile: any, highlighted: boolean, sectionId: string) => {
     const id = uuidv4()
     const videoObject = {
         input: {
@@ -41,6 +41,7 @@ export const uploadVideo = (title: string, description: string, vodFile: any, th
                             description: description,
                             vodAssetVideoId: id,
                             vodAssetThumbnailId: id,
+                            vodAssetSectionId: sectionId,
                             highlighted: highlighted
                         }
                     }

@@ -1,5 +1,4 @@
 import React, {useEffect, useState} from "react";
-import {useHistory} from 'react-router-dom';
 import Amplify, {Auth, Storage, API, graphqlOperation} from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 
@@ -8,9 +7,8 @@ import awsvideoconfig from "../../aws-video-exports";
 import {uploadVideo, listVodFiles, listVodSections} from "../../shared/components/VodStorage"
 import {deleteThumbnailObject, deleteVideoObject, deleteVodAsset} from "../../graphql/mutations";
 import {NavBar} from "../../shared/components";
-import {ListVodAssetsQuery, vodAsset} from "../../API";
+import {vodAsset} from "../../API";
 import {GraphQLResult} from "@aws-amplify/api-graphql";
-import {listSections} from "../../graphql/queries";
 import {createVodSection} from "../../shared/components/VodStorage/VodStorage";
 
 Amplify.configure(awsmobile)
@@ -32,7 +30,9 @@ function GetFiles({func: setVodAssets}: any) {
                 .catch((err) => {
                     console.log(err)
                 })
-        }}>Get Files</button>
+        }}>
+            Get Files
+        </button>
     )
 }
 
@@ -42,23 +42,50 @@ const UploadNewVideo = () => {
     const [vodFile, setVodFile] = useState<File|null>(null)
     const [thumbnailFile, setThumbnailFile] = useState<File|null>(null)
     const [highlighted, setHighlighted] = useState<boolean>(false)
-    const [section, setSection] = useState<boolean>(false)
-    const [sections, setSections] = useState([])
+    const [section, setSection] = useState<any|null>(null)
+    const [sections, setSections] = useState<Array<any>|null>(null)
+    const [nextToken, setToken] = useState<string>('')
 
-    useEffect(() => {
-        listVodSections('')
+    const retrieveSections = () => {
+        listVodSections(nextToken)
             .then((data: any) => {
-                setSections(data.data.listSections.items)
+                console.log(data)
+                if (sections === null || nextToken === '' || nextToken === null) {
+                    setSections(data.data.listSections.items)
+                } else
+                    setSections([...sections, data.data.listSections.items])
+                setToken(data.data.listSections.nextToken)
             })
             .catch((err) => {
                 console.log(err)
             })
+    }
+
+    const retrieveSectionObject = (element: string) => {
+        if (sections === undefined || sections === null) {
+            return null
+        }
+        for (let i = 0; i < sections.length; i++) {
+            if (sections[i].label === element) {
+                return (sections[i])
+            }
+        }
+        return null
+    }
+
+    useEffect(() => {
+        retrieveSections()
     }, [])
+
+    useEffect(() => {
+        console.log(sections)
+        console.log(section)
+    }, [sections, section])
 
     const uploadVod = (e: any) => {
         if (vodFile !== null && thumbnailFile !== null && title !== undefined && description !== undefined
-            && title !== '' && description !== '') {
-            uploadVideo(title, description, vodFile, thumbnailFile, highlighted)
+            && title !== '' && description !== '' && section !== null) {
+            uploadVideo(title, description, vodFile, thumbnailFile, highlighted, section.id)
         }
         e.preventDefault()
     }
@@ -94,12 +121,15 @@ const UploadNewVideo = () => {
             </div>
             <div>
                 <label htmlFor='_sections'>Section</label>
-                <input id='_sections' list='sections' onChange={(e) => console.log(e.target)}/>
+                <input id='_sections' list='sections' onChange={(e) => {
+                    const sectionObject = retrieveSectionObject(e.target.value)
+                    setSection(sectionObject)
+                }}/>
                 <datalist id='sections' onChange={(e: any) => {
                     console.log(e.target.value)
                 }}>
                     {
-                       sections.map((section: any, key: number) => {
+                       sections !== null && sections.map((section: any, key: number) => {
                            return (
                                <option key={key} value={section.label}/>
                            )

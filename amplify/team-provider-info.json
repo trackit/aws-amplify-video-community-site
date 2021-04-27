@@ -8,7 +8,8 @@
       "DeploymentBucketName": "amplify-trackiteduwebsite-prod-131627-deployment",
       "UnauthRoleName": "amplify-trackiteduwebsite-prod-131627-unauthRole",
       "StackName": "amplify-trackiteduwebsite-prod-131627",
-      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-trackiteduwebsite-prod-131627/31230730-a35c-11eb-a6e2-06a11743ac11"
+      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-trackiteduwebsite-prod-131627/31230730-a35c-11eb-a6e2-06a11743ac11",
+      "AmplifyAppId": "dm7y3bsmgn6gv"
     },
     "categories": {
       "auth": {
