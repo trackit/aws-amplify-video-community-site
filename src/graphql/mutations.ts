@@ -23,11 +23,15 @@ export const createVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -55,11 +59,15 @@ export const updateVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -87,11 +95,15 @@ export const deleteVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -181,6 +193,16 @@ export const createSection = /* GraphQL */ `
     createSection(input: $input, condition: $condition) {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -194,6 +216,16 @@ export const updateSection = /* GraphQL */ `
     updateSection(input: $input, condition: $condition) {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -207,6 +239,151 @@ export const deleteSection = /* GraphQL */ `
     deleteSection(input: $input, condition: $condition) {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const createVideoSection = /* GraphQL */ `
+  mutation CreateVideoSection(
+    $input: CreateVideoSectionInput!
+    $condition: ModelVideoSectionConditionInput
+  ) {
+    createVideoSection(input: $input, condition: $condition) {
+      id
+      sectionID
+      videoID
+      section {
+        id
+        label
+        videos {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      video {
+        id
+        title
+        description
+        highlighted
+        video {
+          id
+          token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        sections {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const updateVideoSection = /* GraphQL */ `
+  mutation UpdateVideoSection(
+    $input: UpdateVideoSectionInput!
+    $condition: ModelVideoSectionConditionInput
+  ) {
+    updateVideoSection(input: $input, condition: $condition) {
+      id
+      sectionID
+      videoID
+      section {
+        id
+        label
+        videos {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      video {
+        id
+        title
+        description
+        highlighted
+        video {
+          id
+          token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        sections {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const deleteVideoSection = /* GraphQL */ `
+  mutation DeleteVideoSection(
+    $input: DeleteVideoSectionInput!
+    $condition: ModelVideoSectionConditionInput
+  ) {
+    deleteVideoSection(input: $input, condition: $condition) {
+      id
+      sectionID
+      videoID
+      section {
+        id
+        label
+        videos {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      video {
+        id
+        title
+        description
+        highlighted
+        video {
+          id
+          token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        sections {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }

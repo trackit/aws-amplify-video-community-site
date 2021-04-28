@@ -20,11 +20,15 @@ export const getVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -54,11 +58,8 @@ export const listVodAssets = /* GraphQL */ `
           createdAt
           updatedAt
         }
-        section {
-          id
-          label
-          createdAt
-          updatedAt
+        sections {
+          nextToken
         }
         createdAt
         updatedAt
@@ -128,6 +129,16 @@ export const getSection = /* GraphQL */ `
     getSection(id: $id) {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -143,6 +154,9 @@ export const listSections = /* GraphQL */ `
       items {
         id
         label
+        videos {
+          nextToken
+        }
         createdAt
         updatedAt
       }

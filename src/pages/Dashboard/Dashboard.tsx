@@ -85,7 +85,7 @@ const UploadNewVideo = () => {
     const uploadVod = (e: any) => {
         if (vodFile !== null && thumbnailFile !== null && title !== undefined && description !== undefined
             && title !== '' && description !== '' && section !== null) {
-            uploadVideo(title, description, vodFile, thumbnailFile, highlighted, section.id)
+            uploadVideo(title, description, vodFile, thumbnailFile, highlighted, [section.id]) // todo: we should already have an array of section ids
         }
         e.preventDefault()
     }

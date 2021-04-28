@@ -16,7 +16,7 @@ type vodAsset @model (subscriptions: {level: public})
   #DO NOT EDIT
   video:videoObject @connection
   thumbnail:thumbnailObject @connection
-  section:section @connection
+  sections:[VideoSection] @connection(keyName: "byVideo", fields: ["id"])
 }
 
 #DO NOT EDIT
@@ -54,4 +54,16 @@ type section @model
 {
   id:ID!
   label:String!
+  videos:[VideoSection] @connection(keyName: "byVideo", fields: ["id"])
 }
+
+type VideoSection @model(queries: null)
+@key(name: "bySection", fields: ["sectionID", "videoID"])
+@key(name: "byVideo", fields: ["videoID", "sectionID"]) {
+  id: ID!
+  sectionID: ID!
+  videoID: ID!
+  section: section! @connection(fields: ["sectionID"])
+  video: vodAsset! @connection(fields: ["videoID"])
+}
+

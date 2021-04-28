@@ -2,7 +2,7 @@ import {API, graphqlOperation, Storage} from "aws-amplify";
 import {
     createSection,
     createThumbnailObject,
-    createVideoObject,
+    createVideoObject, createVideoSection,
     createVodAsset,
     deleteSection
 } from "../../../graphql/mutations";
@@ -13,7 +13,7 @@ import awsmobile from "../../../aws-exports";
 import {GraphQLResult} from "@aws-amplify/api-graphql";
 import {CreateSectionInput, DeleteSectionInput} from "../../../API";
 
-export const uploadVideo = (title: string, description: string, vodFile: any, thumbnailFile: any, highlighted: boolean, sectionId: string) => {
+export const uploadVideo = (title: string, description: string, vodFile: any, thumbnailFile: any, highlighted: boolean, sectionsId: Array<string>) => {
     const id = uuidv4()
     const videoObject = {
         input: {
@@ -41,11 +41,22 @@ export const uploadVideo = (title: string, description: string, vodFile: any, th
                             description: description,
                             vodAssetVideoId: id,
                             vodAssetThumbnailId: id,
-                            vodAssetSectionId: sectionId,
                             highlighted: highlighted
                         }
                     }
-                    API.graphql(graphqlOperation(createVodAsset, videoAsset))
+                    const createVodAssetQuery = API.graphql(graphqlOperation(createVodAsset, videoAsset)) as Promise<GraphQLResult>
+                    createVodAssetQuery.then((data: any) => {
+                        for (let i = 0; i < sectionsId.length; i++) {
+                            const videoSection = {
+                                input: {
+                                    sectionID: sectionsId[i],
+                                    videoID: data.data.createVodAsset.id,
+                                }
+                            }
+                            API.graphql(graphqlOperation(createVideoSection, videoSection))
+                        }
+                        console.log(data.data.createVodAsset.id)
+                    })
                     Storage.put(`${id}.${vodExtension[vodExtension.length - 1]}`, vodFile, {
                         bucket: awsvideoconfig.awsInputVideo,
                         region: awsmobile.aws_project_region,

@@ -20,11 +20,15 @@ export const onCreateVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -49,11 +53,15 @@ export const onUpdateVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -78,11 +86,15 @@ export const onDeleteVodAsset = /* GraphQL */ `
         createdAt
         updatedAt
       }
-      section {
-        id
-        label
-        createdAt
-        updatedAt
+      sections {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
       }
       createdAt
       updatedAt
@@ -151,6 +163,16 @@ export const onCreateSection = /* GraphQL */ `
     onCreateSection {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -161,6 +183,16 @@ export const onUpdateSection = /* GraphQL */ `
     onUpdateSection {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
       createdAt
       updatedAt
     }
@@ -171,6 +203,142 @@ export const onDeleteSection = /* GraphQL */ `
     onDeleteSection {
       id
       label
+      videos {
+        items {
+          id
+          sectionID
+          videoID
+          createdAt
+          updatedAt
+        }
+        nextToken
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onCreateVideoSection = /* GraphQL */ `
+  subscription OnCreateVideoSection {
+    onCreateVideoSection {
+      id
+      sectionID
+      videoID
+      section {
+        id
+        label
+        videos {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      video {
+        id
+        title
+        description
+        highlighted
+        video {
+          id
+          token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        sections {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onUpdateVideoSection = /* GraphQL */ `
+  subscription OnUpdateVideoSection {
+    onUpdateVideoSection {
+      id
+      sectionID
+      videoID
+      section {
+        id
+        label
+        videos {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      video {
+        id
+        title
+        description
+        highlighted
+        video {
+          id
+          token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        sections {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      createdAt
+      updatedAt
+    }
+  }
+`;
+export const onDeleteVideoSection = /* GraphQL */ `
+  subscription OnDeleteVideoSection {
+    onDeleteVideoSection {
+      id
+      sectionID
+      videoID
+      section {
+        id
+        label
+        videos {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
+      video {
+        id
+        title
+        description
+        highlighted
+        video {
+          id
+          token
+          createdAt
+          updatedAt
+        }
+        thumbnail {
+          id
+          createdAt
+          updatedAt
+        }
+        sections {
+          nextToken
+        }
+        createdAt
+        updatedAt
+      }
       createdAt
       updatedAt
     }
