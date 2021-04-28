@@ -1,7 +1,7 @@
 import {withAuthenticator} from "aws-amplify-react";
 import {NavBar} from "../../shared/components";
 
-const WebinarsApp = () => {
+const SearchPage = () => {
     return (
         <div>
             <NavBar/>
@@ -10,4 +10,4 @@ const WebinarsApp = () => {
     )
 }
 
-export default withAuthenticator(WebinarsApp, true)
+export default withAuthenticator(SearchPage, true)
