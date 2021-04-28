@@ -54,7 +54,7 @@ type section @model
 {
   id:ID!
   label:String!
-  videos:[VideoSection] @connection(keyName: "byVideo", fields: ["id"])
+  videos:[VideoSection] @connection(keyName: "bySection", fields: ["id"])
 }
 
 type VideoSection @model(queries: null)

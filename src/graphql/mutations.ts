@@ -28,6 +28,20 @@ export const createVodAsset = /* GraphQL */ `
           id
           sectionID
           videoID
+          section {
+            id
+            label
+            createdAt
+            updatedAt
+          }
+          video {
+            id
+            title
+            description
+            highlighted
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -64,6 +78,20 @@ export const updateVodAsset = /* GraphQL */ `
           id
           sectionID
           videoID
+          section {
+            id
+            label
+            createdAt
+            updatedAt
+          }
+          video {
+            id
+            title
+            description
+            highlighted
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -100,6 +128,20 @@ export const deleteVodAsset = /* GraphQL */ `
           id
           sectionID
           videoID
+          section {
+            id
+            label
+            createdAt
+            updatedAt
+          }
+          video {
+            id
+            title
+            description
+            highlighted
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -198,6 +240,20 @@ export const createSection = /* GraphQL */ `
           id
           sectionID
           videoID
+          section {
+            id
+            label
+            createdAt
+            updatedAt
+          }
+          video {
+            id
+            title
+            description
+            highlighted
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -221,6 +277,20 @@ export const updateSection = /* GraphQL */ `
           id
           sectionID
           videoID
+          section {
+            id
+            label
+            createdAt
+            updatedAt
+          }
+          video {
+            id
+            title
+            description
+            highlighted
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -244,6 +314,20 @@ export const deleteSection = /* GraphQL */ `
           id
           sectionID
           videoID
+          section {
+            id
+            label
+            createdAt
+            updatedAt
+          }
+          video {
+            id
+            title
+            description
+            highlighted
+            createdAt
+            updatedAt
+          }
           createdAt
           updatedAt
         }
@@ -267,6 +351,13 @@ export const createVideoSection = /* GraphQL */ `
         id
         label
         videos {
+          items {
+            id
+            sectionID
+            videoID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -289,6 +380,13 @@ export const createVideoSection = /* GraphQL */ `
           updatedAt
         }
         sections {
+          items {
+            id
+            sectionID
+            videoID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -312,6 +410,13 @@ export const updateVideoSection = /* GraphQL */ `
         id
         label
         videos {
+          items {
+            id
+            sectionID
+            videoID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -334,6 +439,13 @@ export const updateVideoSection = /* GraphQL */ `
           updatedAt
         }
         sections {
+          items {
+            id
+            sectionID
+            videoID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -357,6 +469,13 @@ export const deleteVideoSection = /* GraphQL */ `
         id
         label
         videos {
+          items {
+            id
+            sectionID
+            videoID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
@@ -379,6 +498,13 @@ export const deleteVideoSection = /* GraphQL */ `
           updatedAt
         }
         sections {
+          items {
+            id
+            sectionID
+            videoID
+            createdAt
+            updatedAt
+          }
           nextToken
         }
         createdAt
