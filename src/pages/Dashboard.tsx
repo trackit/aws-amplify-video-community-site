@@ -1,235 +1,82 @@
-import { useEffect, useState } from 'react'
-import { Auth, Storage, API, graphqlOperation } from 'aws-amplify'
-
-import awsmobile from '../aws-exports'
-import awsvideoconfig from '../aws-video-exports'
-import { uploadVideo } from '../shared/components/VodStorage'
+import React, {useEffect, useState} from 'react';
 import {
-    deleteThumbnailObject,
-    deleteVideoObject,
-    deleteVodAsset,
-} from '../graphql/mutations'
-import { NavBar } from '../shared/components'
-import { vodAsset } from '../API'
-import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { createVodSection } from '../shared/components/VodStorage/VodStorage'
-import { fetchVodFiles, fetchSections } from '../shared/utilities/vod-fetch'
+    Switch,
+    Route,
+    Link,
+    useRouteMatch,
+} from 'react-router-dom';
 
-function GetFiles({ func: setVodAssets }: any) {
-    const [nextToken, setNextToken] = useState('')
+import Amplify, { Auth } from 'aws-amplify';
+import { withAuthenticator } from 'aws-amplify-react';
+
+import awsmobile from '../../aws-exports';
+import awsvideoconfig from "../../aws-video-exports";
+import { NavBar } from '../../shared/components';
+import VideoAdd from './VideoAdd';
+import VideoManage from './VideoManage';
+import LivestreamAdd from './LivestreamAdd';
+import LivestreamManage from './LivestreamManage';
+import WebinarAdd from './WebinarAdd';
+import WebinarManage from './WebinarManage';
+
+Amplify.configure(awsmobile)
+
+type LeftPanelProps = {
+    currentPage: string,
+    setCurrentPage: any
+}
+
+const LeftPanel = ({currentPage, setCurrentPage}: LeftPanelProps) => {
+    const match = useRouteMatch();
 
     return (
-        <button
-            onClick={() => {
-                const getFilesQuery = fetchVodFiles(
-                    nextToken
-                ) as Promise<GraphQLResult>
-                getFilesQuery
-                    .then((data: any) => {
-                        console.log(data)
-                        if (data.errors === undefined) {
-                            setNextToken(data.data?.listVodAssets.nextToken)
-                            setVodAssets(data.data?.listVodAssets.items)
-                        }
-                    })
-                    .catch((err) => {
-                        console.log(err)
-                    })
-            }}
-        >
-            Get Files
-        </button>
+        <div>
+            <h2>Video</h2>
+            <div><Link to={`${match.url}/video/add`} onClick={() => setCurrentPage('video/add')}>Add new video</Link></div>
+            <div><Link to={`${match.url}/video/manage`} onClick={() => setCurrentPage('video/manage')}>Manage videos</Link></div>
+            <h2>Livestream</h2>
+            <div><Link to={`${match.url}/livestream/add`} onClick={() => setCurrentPage('livestream/add')}>Add new livestream</Link></div>
+            <div><Link to={`${match.url}/livestream/manage`} onClick={() => setCurrentPage('livestream/manage')}>Manage livestreams</Link></div>
+            <h2>Webinars</h2>
+            <div><Link to={`${match.url}/webinar/add`} onClick={() => setCurrentPage('webinar/add')}>Add new webinar</Link></div>
+            <div><Link to={`${match.url}/webinar/manage`} onClick={() => setCurrentPage('webinar/manage')}>Manage webinars</Link></div>
+        </div>
     )
 }
 
-const UploadNewVideo = () => {
-    const [title, setTitle] = useState<string | undefined>(undefined)
-    const [description, setDescription] = useState<string | undefined>(
-        undefined
-    )
-    const [vodFile, setVodFile] = useState<File | null>(null)
-    const [thumbnailFile, setThumbnailFile] = useState<File | null>(null)
-    const [highlighted, setHighlighted] = useState<boolean>(false)
-    const [section, setSection] = useState<any | null>(null)
-    const [sections, setSections] = useState<Array<any> | null>(null)
-    const [nextToken, setToken] = useState<string>('')
-
-    const retrieveSections = () => {
-        fetchSections(nextToken)
-            .then((data: any) => {
-                console.log(data)
-                if (
-                    sections === null ||
-                    nextToken === '' ||
-                    nextToken === null
-                ) {
-                    setSections(data.data.listSections.items)
-                } else setSections([...sections, data.data.listSections.items])
-                setToken(data.data.listSections.nextToken)
-            })
-            .catch((err) => {
-                console.log(err)
-            })
-    }
-
-    const retrieveSectionObject = (element: string) => {
-        if (sections === undefined || sections === null) {
-            return null
-        }
-        for (let i = 0; i < sections.length; i++) {
-            if (sections[i].label === element) {
-                return sections[i]
-            }
-        }
-        return null
-    }
-
-    useEffect(() => {
-        retrieveSections()
-    })
-
-    useEffect(() => {
-        console.log(sections)
-        console.log(section)
-    }, [sections, section])
-
-    const uploadVod = (e: any) => {
-        if (
-            vodFile !== null &&
-            thumbnailFile !== null &&
-            title !== undefined &&
-            description !== undefined &&
-            title !== '' &&
-            description !== '' &&
-            section !== null
-        ) {
-            uploadVideo(
-                title,
-                description,
-                vodFile,
-                thumbnailFile,
-                highlighted,
-                [section.id]
-            ) // todo: we should already have an array of section ids
-        }
-        e.preventDefault()
-    }
-
+const RightPanel = () => {
+    let match = useRouteMatch();
     return (
-        <form onSubmit={uploadVod}>
-            <div>
-                <input
-                    type="text"
-                    placeholder="Title"
-                    onChange={(e) => setTitle(e.target.value)}
-                />
-            </div>
-            <div>
-                <input
-                    type="text"
-                    placeholder="Description"
-                    onChange={(e) => setDescription(e.target.value)}
-                />
-            </div>
-            <div>
-                <input
-                    type="file"
-                    id="vod_upload"
-                    name="vod_upload"
-                    onChange={(e) => {
-                        if (e.target && e.target.files && e.target.files[0])
-                            setVodFile(e.target.files[0])
-                        else setVodFile(null)
-                    }}
-                />
-            </div>
-            <div>
-                <input
-                    type="file"
-                    id="thumbnail_upload"
-                    name="thumbnail_upload"
-                    onChange={(e) => {
-                        if (e.target && e.target.files && e.target.files[0])
-                            setThumbnailFile(e.target.files[0])
-                        else setThumbnailFile(null)
-                    }}
-                />
-            </div>
-            <div>
-                <label htmlFor="highlighted">Highlighted</label>
-                <input
-                    id="highlighted"
-                    type="checkbox"
-                    onChange={() => {
-                        setHighlighted(!highlighted)
-                    }}
-                />
-            </div>
-            <div>
-                <label htmlFor="_sections">Section</label>
-                <input
-                    id="_sections"
-                    list="sections"
-                    onChange={(e) => {
-                        const sectionObject = retrieveSectionObject(
-                            e.target.value
-                        )
-                        setSection(sectionObject)
-                    }}
-                />
-                <datalist
-                    id="sections"
-                    onChange={(e: any) => {
-                        console.log(e.target.value)
-                    }}
-                >
-                    {sections !== null &&
-                        sections.map((section: any, key: number) => {
-                            return <option key={key} value={section.label} />
-                        })}
-                </datalist>
-            </div>
-            <div>
-                <input type="submit" value="Upload Video" />
-            </div>
-        </form>
-    )
-}
-
-const CreateSection = () => {
-    const [newSection, setNewSection] = useState<string>('')
-
-    const createNewSection = (e: any) => {
-        if (newSection !== '') {
-            createVodSection(newSection)
-                .then((data) => {
-                    console.log(data)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        }
-        e.preventDefault()
-    }
-
-    return (
-        <form onSubmit={createNewSection}>
-            <label htmlFor="new-section">or create a new one</label>
-            <input
-                id="new-section"
-                type="text"
-                onChange={(e) => setNewSection(e.target.value)}
-            />
-            <input type="submit" value="Add new section" />
-        </form>
-    )
+        <div>
+            <Switch>
+                <Route path={`${match.path}/video/add`}>
+                    <VideoAdd />
+                </Route>
+                <Route path={`${match.path}/video/manage`}>
+                    <VideoManage />
+                </Route>
+                <Route path={`${match.path}/livestream/add`}>
+                    <LivestreamAdd />
+                </Route>
+                <Route path={`${match.path}/livestream/manage`}>
+                    <LivestreamManage />
+                </Route>
+                <Route path={`${match.path}/webinar/add`}>
+                    <WebinarAdd />
+                </Route>
+                <Route path={`${match.path}/webinar/manage`}>
+                    <WebinarManage />
+                </Route>
+            </Switch>
+        </div>
+    );
 }
 
 const Dashboard = () => {
     const [groups, setGroups] = useState([] as Array<string>)
+    const [currentPage, setCurrentPage] = useState<string>('')
 
     useEffect(() => {
-        console.log('Called')
         Auth.currentSession().then((data) => {
             const groupsData = data.getIdToken().payload['cognito:groups']
             console.log(data, groupsData)
@@ -237,77 +84,14 @@ const Dashboard = () => {
         })
     }, [])
 
-    const [vodAssets, setVodAssets] = useState([])
-
-    useEffect(() => {
-        console.log('VoD assets:', vodAssets)
-    }, [vodAssets])
-
     const Admin = () => {
         return (
             <div>
-                <NavBar />
-                <p>Welcome to the dashboard</p>
-                <UploadNewVideo />
-                <CreateSection />
-                <GetFiles func={setVodAssets} />
-                {vodAssets.map((asset: vodAsset, key: number) => {
-                    const deleteVideo = () => {
-                        if (asset.video !== undefined && asset.video !== null) {
-                            const deleteVodAssetQuery = API.graphql(
-                                graphqlOperation(deleteVodAsset, {
-                                    input: { id: asset.id },
-                                })
-                            ) as Promise<GraphQLResult>
-                            deleteVodAssetQuery
-                                .then((data: any) => {
-                                    API.graphql({
-                                        query: deleteVideoObject,
-                                        variables: {
-                                            input: { id: asset.video?.id },
-                                        },
-                                    })
-                                    API.graphql({
-                                        query: deleteThumbnailObject,
-                                        variables: {
-                                            input: { id: asset.video?.id },
-                                        },
-                                    })
-                                    Storage.remove(`${asset.video?.id}.mp4`, {
-                                        bucket: awsvideoconfig.awsInputVideo,
-                                    })
-                                        .then((data) => console.log(data))
-                                        .catch((err) => console.log(err))
-                                    console.log(data)
-                                    Storage.remove(
-                                        `thumbnails/${asset.thumbnail?.id}.jpeg`,
-                                        {
-                                            bucket:
-                                                awsmobile.aws_user_files_s3_bucket,
-                                            customPrefix: {
-                                                public: '',
-                                            },
-                                        }
-                                    )
-                                        .then((data) => console.log(data))
-                                        .catch((err) => console.log(err))
-                                })
-                                .catch((err: any) => console.log(err))
-                        }
-                    }
-
-                    return (
-                        <div key={key}>
-                            <b>{asset.title}</b>
-                            <ul key={key}>
-                                <li>{asset.id}</li>
-                                <li>{asset.description}</li>
-                                <li>{asset.video?.id}</li>
-                            </ul>
-                            <button onClick={deleteVideo}>Delete video</button>
-                        </div>
-                    )
-                })}
+                <NavBar/>
+                <div style={{display: 'flex'}}>
+                    <LeftPanel currentPage={currentPage} setCurrentPage={setCurrentPage} />
+                    <RightPanel />
+                </div>
             </div>
         )
     }
@@ -327,4 +111,4 @@ const Dashboard = () => {
     return choosePanel()
 }
 
-export default Dashboard
+export default withAuthenticator(Dashboard, true)
