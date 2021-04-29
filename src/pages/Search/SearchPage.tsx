@@ -1,11 +1,15 @@
 import { withAuthenticator } from "aws-amplify-react";
-import { NavBar } from "../../shared/components";
+import { NavBar, SearchBar } from "../../shared/components";
 
 const SearchPage = () => {
+    const searchQuery = () => {
+        console.log('searchQuery')
+    }
+
     return (
         <div>
             <NavBar/>
-            <p>Coming Soon</p>
+            <SearchBar searchQuery={searchQuery}/>
         </div>
     );
 };
