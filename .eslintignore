@@ -1,0 +1,8 @@
+/amplify
+/build
+/dist
+/node_modules
+/src/graphql
+/src/API.ts
+aws-exports.js
+aws-video-exports.js
