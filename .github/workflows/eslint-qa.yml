@@ -23,5 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
       - name: npm install
         run: npm install
+      - name: install eslint
+        run: npm i eslint -g
       - name: eslint
         run: eslint .
