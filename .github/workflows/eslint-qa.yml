@@ -26,4 +26,4 @@ jobs:
       - name: install eslint
         run: npm i eslint -g
       - name: eslint
-        run: eslint .
+        run: eslint src
