@@ -10,7 +10,6 @@ import Amplify, { Auth } from 'aws-amplify';
 import { withAuthenticator } from 'aws-amplify-react';
 
 import awsmobile from '../../aws-exports';
-import awsvideoconfig from "../../aws-video-exports";
 import { NavBar } from '../../shared/components';
 import VideoAdd from './VideoAdd';
 import VideoManage from './VideoManage';
