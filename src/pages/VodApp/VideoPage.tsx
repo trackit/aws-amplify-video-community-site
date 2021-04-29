@@ -7,16 +7,21 @@ import { NavBar, VideoPlayer } from "../../shared/components";
 import awsvideoconfig from "../../aws-video-exports";
 import './VideoPage.css';
 import { GraphQLResult } from "@aws-amplify/api-graphql";
+import { GetVodAssetQuery } from "../../API";
 
-const VideoCard = ({asset}: any) => {
+type VideoCardProps = {
+    asset: GetVodAssetQuery
+}
+
+const VideoCard = ({asset}: VideoCardProps) => {
     const videoJsOptions = {
         autoplay: false,
         controls: true,
         sources: [{
-            src: `https://${awsvideoconfig.awsOutputVideo}/${asset.video.id}/${asset.video.id}.m3u8`,
+            src: `https://${awsvideoconfig.awsOutputVideo}/${asset.getVodAsset?.video?.id}/${asset.getVodAsset?.video?.id}.m3u8`,
             type: 'application/x-mpegURL',
         }],
-        token: asset.video.token,
+        token: asset.getVodAsset?.video?.token,
     };
 
     return (
@@ -26,16 +31,16 @@ const VideoCard = ({asset}: any) => {
                     {...videoJsOptions}
                 />}
             </div>
-            <h2>{asset.title}</h2>
-            <p>{asset.description}</p>
+            <h2>{asset.getVodAsset?.title}</h2>
+            <p>{asset.getVodAsset?.description}</p>
         </div>
     );
 };
 
 const VideoPage = () => {
     const {id}: any = useParams();
-    const [asset, setAsset] = useState(null);
-    const [loaded, setLoaded] = useState(false);
+    const [asset, setAsset] = useState<GetVodAssetQuery | null>(null);
+    const [loaded, setLoaded] = useState<boolean>(false);
 
     useEffect(() => {
         const getVodAssetRequest = API.graphql({query: getVodAsset, variables: {id: id}}) as Promise<GraphQLResult>;
