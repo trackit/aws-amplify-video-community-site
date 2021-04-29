@@ -15,6 +15,11 @@ jobs:
     strategy:
       matrix:
         node-version: [12.x]
+
+    defaults:
+      run:
+        shell: bash
+
     steps:
       - uses: actions/checkout@v2
       - name: Use Nodejs ${{ matrix.node-version }}
@@ -26,4 +31,4 @@ jobs:
       - name: install eslint
         run: npm i eslint -g
       - name: eslint
-        run: eslint src
+        run: eslint . --ext js,jsx,ts,tsx
