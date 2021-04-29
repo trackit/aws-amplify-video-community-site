@@ -75,7 +75,7 @@ const UploadNewVideo = () => {
 
     useEffect(() => {
         retrieveSections()
-    }, [])
+    })
 
     useEffect(() => {
         console.log(sections)

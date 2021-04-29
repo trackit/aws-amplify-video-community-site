@@ -37,7 +37,7 @@ const VodApp = () => {
             .catch((err: any) => {
                 console.log(err)
             })
-    }, [])
+    })
 
     return (
         <div>

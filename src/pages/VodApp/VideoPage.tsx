@@ -53,7 +53,7 @@ const VideoPage = () => {
                 setLoaded(true)
                 console.log(err)
             })
-    }, [])
+    })
 
     return (
         <div>

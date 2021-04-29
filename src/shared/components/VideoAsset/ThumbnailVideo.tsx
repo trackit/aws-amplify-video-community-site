@@ -24,7 +24,7 @@ const ThumbnailVideo = ({asset, className}: any) => {
                     console.log(err)
                 })
         }
-    }, [])
+    })
 
     const redirectVideoPage = () => {
         history.push(`/video/${asset.id}`)
