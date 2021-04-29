@@ -11,7 +11,6 @@ const NavBar = () => {
         Auth.currentSession()
             .then((data) => {
                 const groupsData = data.getIdToken().payload['cognito:groups']
-                console.log(data, groupsData)
                 if (groupsData !== undefined)
                     setGroups(groupsData)
             })
