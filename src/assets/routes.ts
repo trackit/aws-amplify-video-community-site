@@ -6,12 +6,12 @@ export const routes: Array<RouteProps> = [
     {
         path: '/admin',
         exact: true,
-        component: Dashboard
+        component: Dashboard,
     },
     {
         path: '/',
         exact: true,
-        component: HomePage
+        component: HomePage,
     },
     {
         path: '/video/:id',
@@ -21,21 +21,21 @@ export const routes: Array<RouteProps> = [
     {
         path: '/videos',
         exact: true,
-        component: VodApp
+        component: VodApp,
     },
     {
         path: '/live',
         exact: true,
-        component: LiveApp
+        component: LiveApp,
     },
     {
         path: '/webinars',
         exact: true,
-        component: WebinarsApp
+        component: WebinarsApp,
     },
     {
         path: '/search',
         exact: true,
-        component: SearchPage
-    }
-]
+        component: SearchPage,
+    },
+];

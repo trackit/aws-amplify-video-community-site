@@ -7,7 +7,7 @@ const WebinarsApp = () => {
             <NavBar/>
             <p>Coming Soon</p>
         </div>
-    )
-}
+    );
+};
 
-export default withAuthenticator(WebinarsApp, true)
+export default withAuthenticator(WebinarsApp, true);

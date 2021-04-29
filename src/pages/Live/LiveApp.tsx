@@ -7,7 +7,7 @@ const LiveApp = () => {
             <NavBar/>
             <p>Coming Soon</p>
         </div>
-    )
-}
+    );
+};
 
-export default withAuthenticator(LiveApp, true)
+export default withAuthenticator(LiveApp, true);

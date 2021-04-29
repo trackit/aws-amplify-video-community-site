@@ -6,7 +6,7 @@ const HomePage = () => {
         <div>
             <NavBar/>
         </div>
-    )
-}
+    );
+};
 
 export default withAuthenticator(HomePage, true);

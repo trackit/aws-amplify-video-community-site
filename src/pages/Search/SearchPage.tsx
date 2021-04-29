@@ -7,7 +7,7 @@ const SearchPage = () => {
             <NavBar/>
             <p>Coming Soon</p>
         </div>
-    )
-}
+    );
+};
 
-export default withAuthenticator(SearchPage, true)
+export default withAuthenticator(SearchPage, true);
