@@ -1,8 +1,8 @@
 import {withAuthenticator} from 'aws-amplify-react';
 import {useParams} from 'react-router-dom';
 import {useEffect, useState} from "react";
-import {getVodAsset, listVodAssets} from "../../graphql/queries";
-import {API, graphqlOperation} from "aws-amplify";
+import {getVodAsset} from "../../graphql/queries";
+import {API} from "aws-amplify";
 import {NavBar, VideoPlayer} from "../../shared/components";
 import awsvideoconfig from "../../aws-video-exports";
 import './VideoPage.css'
