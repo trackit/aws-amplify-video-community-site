@@ -1,12 +1,12 @@
-import {withAuthenticator} from 'aws-amplify-react';
-import {useParams} from 'react-router-dom';
-import {useEffect, useState} from "react";
-import {getVodAsset} from "../../graphql/queries";
+import { withAuthenticator } from 'aws-amplify-react';
+import { useParams } from 'react-router-dom';
+import { useEffect, useState } from "react";
+import { getVodAsset } from "../../graphql/queries";
 import {API} from "aws-amplify";
-import {NavBar, VideoPlayer} from "../../shared/components";
+import { NavBar, VideoPlayer } from "../../shared/components";
 import awsvideoconfig from "../../aws-video-exports";
-import './VideoPage.css'
-import {GraphQLResult} from "@aws-amplify/api-graphql";
+import './VideoPage.css';
+import { GraphQLResult } from "@aws-amplify/api-graphql";
 
 const VideoCard = ({asset}: any) => {
     const videoJsOptions = {

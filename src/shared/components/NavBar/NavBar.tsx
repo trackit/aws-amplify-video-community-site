@@ -1,8 +1,8 @@
 import './NavBar.css'
 import React, {useEffect, useState} from "react";
-import {Auth} from "aws-amplify";
-import {AiOutlineSearch} from 'react-icons/ai'
-import {AiOutlineSetting} from 'react-icons/ai'
+import { Auth } from "aws-amplify";
+import { AiOutlineSearch } from 'react-icons/ai'
+import { AiOutlineSetting } from 'react-icons/ai'
 
 const NavBar = () => {
     const [groups, setGroups] = useState<Array<string>>([])

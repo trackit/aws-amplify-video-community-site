@@ -1,12 +1,12 @@
-import React, {useEffect, useState} from "react";
-import {withAuthenticator} from 'aws-amplify-react';
-import {listVodFiles} from "../../shared/components/VodStorage";
+import React, { useEffect, useState } from "react";
+import { withAuthenticator } from 'aws-amplify-react';
+import { listVodFiles } from "../../shared/components/VodStorage";
 import './VodApp.css'
-import {HighlightedVideo, NavBar, ThumbnailVideo} from "../../shared/components";
-import {API, graphqlOperation} from "aws-amplify";
-import {listSections, listVodAssets} from "../../graphql/queries";
-import {GraphQLResult} from "@aws-amplify/api-graphql";
-import {ModelvodAssetFilterInput} from "../../API";
+import { HighlightedVideo, NavBar, ThumbnailVideo } from "../../shared/components";
+import { API, graphqlOperation } from "aws-amplify";
+import { listSections, listVodAssets } from "../../graphql/queries";
+import { GraphQLResult } from "@aws-amplify/api-graphql";
+import { ModelvodAssetFilterInput } from "../../API";
 
 const VodApp = () => {
     const [vodAssets, setVodAssets] = useState([])
