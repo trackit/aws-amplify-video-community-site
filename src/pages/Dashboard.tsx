@@ -27,7 +27,6 @@ type LeftPanelProps = {
 
 const LeftPanel = ({currentPage, setCurrentPage}: LeftPanelProps) => {
     const match = useRouteMatch();
-
     return (
         <div>
             <h2>Video</h2>
@@ -46,7 +45,7 @@ const LeftPanel = ({currentPage, setCurrentPage}: LeftPanelProps) => {
 const RightPanel = () => {
     let match = useRouteMatch();
     return (
-        <div>
+        <div style={{width: '100%', padding: '15px'}}>
             <Switch>
                 <Route path={`${match.path}/video/add`}>
                     <VideoAdd />
