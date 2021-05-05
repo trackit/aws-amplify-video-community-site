@@ -39,6 +39,7 @@
     "eject": "react-scripts eject",
     "lint": "eslint .",
     "lint:fix": "eslint --fix .",
+    "lint:report": "eslint --output-file eslint_report.json --format json src",
     "prettier": "prettier --write src",
     "pre-commit": "npx lint-staged",
     "prepare": "husky install"
