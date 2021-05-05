@@ -1,6 +1,13 @@
-import { RouteProps } from 'react-router-dom';
-import { Dashboard, VodApp, VideoPage, HomePage, LiveApp, WebinarsApp, SearchPage } from '../pages';
-
+import { RouteProps } from 'react-router-dom'
+import {
+    Dashboard,
+    VodApp,
+    VideoPage,
+    HomePage,
+    LiveApp,
+    WebinarsApp,
+    SearchPage,
+} from '../pages'
 
 export const routes: Array<RouteProps> = [
     {
@@ -38,4 +45,4 @@ export const routes: Array<RouteProps> = [
         exact: true,
         component: SearchPage,
     },
-];
+]

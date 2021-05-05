@@ -1,12 +1,12 @@
-import { withAuthenticator } from "aws-amplify-react";
-import { NavBar } from "../../shared/components";
+import { withAuthenticator } from 'aws-amplify-react'
+import { NavBar } from '../../shared/components'
 
 const HomePage = () => {
     return (
         <div>
-            <NavBar/>
+            <NavBar />
         </div>
-    );
-};
+    )
+}
 
-export default withAuthenticator(HomePage, true);
+export default withAuthenticator(HomePage, true)
