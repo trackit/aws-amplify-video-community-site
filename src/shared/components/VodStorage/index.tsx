@@ -1,3 +1,3 @@
-import {uploadVideo, listVodFiles, listVodSections} from './VodStorage';
+import { uploadVideo, listVodFiles, listVodSections } from './VodStorage'
 
-export {uploadVideo, listVodFiles, listVodSections};
+export { uploadVideo, listVodFiles, listVodSections }

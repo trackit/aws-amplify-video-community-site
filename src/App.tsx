@@ -1,25 +1,23 @@
-import React from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
-import {routes} from "./assets/routes";
-import './App.css';
+import React from 'react'
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { routes } from './assets/routes'
+import './App.css'
 
 function App() {
-  return (
-      <Router>
-        <Switch>
-          {
-            routes.map((route, key) => (
+    return (
+        <Router>
+            <Switch>
+                {routes.map((route, key) => (
                     <Route
                         key={key}
                         exact={route.exact}
                         path={route.path}
                         component={route.component}
                     />
-                )
-            )}
-        </Switch>
-      </Router>
-  );
+                ))}
+            </Switch>
+        </Router>
+    )
 }
 
-export default App;
+export default App
