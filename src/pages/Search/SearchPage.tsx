@@ -1,4 +1,3 @@
-import { withAuthenticator } from 'aws-amplify-react'
 import { NavBar } from '../../shared/components'
 
 const SearchPage = () => {
@@ -10,4 +9,4 @@ const SearchPage = () => {
     )
 }
 
-export default withAuthenticator(SearchPage, true)
+export default SearchPage

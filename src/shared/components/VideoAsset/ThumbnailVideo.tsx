@@ -1,29 +1,29 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { useHistory } from 'react-router-dom'
 import { Storage } from 'aws-amplify'
+import Loader from 'react-loader-spinner'
 import awsmobile from '../../../aws-exports'
 
+async function fetchThumbnail(asset: any) {
+    return Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
+        bucket: awsmobile.aws_user_files_s3_bucket,
+        customPrefix: {
+            public: '',
+        },
+    })
+}
+
 const ThumbnailVideo = ({ asset, className }: any) => {
-    const [thumbnailUrl, setThumbnailUrl] = useState('')
+    const [thumbnailUrl, setThumbnailUrl] = useState<Object | string>('')
     const history = useHistory()
 
     useEffect(() => {
-        if (asset.thumbnail) {
-            console.log(asset.thumbnail.id)
-            Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
-                bucket: awsmobile.aws_user_files_s3_bucket,
-                customPrefix: {
-                    public: '',
-                },
-            })
-                .then((data: any) => {
-                    console.log(asset, data)
-                    setThumbnailUrl(data)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
-        }
+        ;(async () => {
+            if (asset.thumbnail) {
+                const data = await fetchThumbnail(asset)
+                setThumbnailUrl(data)
+            }
+        })()
     })
 
     const redirectVideoPage = () => {
@@ -33,8 +33,16 @@ const ThumbnailVideo = ({ asset, className }: any) => {
     return (
         <div onClick={redirectVideoPage} className={className ? className : ''}>
             {asset.title}
-            {thumbnailUrl !== '' && (
-                <img src={thumbnailUrl} alt={asset.title} />
+            {thumbnailUrl !== '' ? (
+                <img src={thumbnailUrl as string} alt={asset.title} />
+            ) : (
+                <Loader
+                    type="Rings"
+                    color="#FFA41C"
+                    height={100}
+                    width={100}
+                    timeout={3000} //3 secs
+                />
             )}
         </div>
     )

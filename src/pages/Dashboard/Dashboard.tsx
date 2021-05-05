@@ -1,6 +1,5 @@
 import React, { useEffect, useState } from 'react'
 import Amplify, { Auth, Storage, API, graphqlOperation } from 'aws-amplify'
-import { withAuthenticator } from 'aws-amplify-react'
 
 import awsmobile from '../../aws-exports'
 import awsvideoconfig from '../../aws-video-exports'
@@ -332,4 +331,4 @@ const Dashboard = () => {
     return choosePanel()
 }
 
-export default withAuthenticator(Dashboard, true)
+export default Dashboard

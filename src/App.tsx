@@ -1,7 +1,7 @@
-import React from 'react'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { withAuthenticator } from '@aws-amplify/ui-react'
 import { routes } from './assets/routes'
-import './App.css'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 
 function App() {
     return (
@@ -20,4 +20,4 @@ function App() {
     )
 }
 
-export default App
+export default withAuthenticator(App)

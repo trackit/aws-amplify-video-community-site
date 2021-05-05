@@ -1,4 +1,3 @@
-import { withAuthenticator } from 'aws-amplify-react'
 import { NavBar } from '../../shared/components'
 
 const LiveApp = () => {
@@ -10,4 +9,4 @@ const LiveApp = () => {
     )
 }
 
-export default withAuthenticator(LiveApp, true)
+export default LiveApp
