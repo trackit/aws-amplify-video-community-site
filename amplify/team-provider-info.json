@@ -1,4 +1,23 @@
 {
+  "staging": {
+    "awscloudformation": {
+      "AuthRoleName": "amplify-trackiteduwebsite-staging-104900-authRole",
+      "UnauthRoleArn": "arn:aws:iam::394125495069:role/amplify-trackiteduwebsite-staging-104900-unauthRole",
+      "AuthRoleArn": "arn:aws:iam::394125495069:role/amplify-trackiteduwebsite-staging-104900-authRole",
+      "Region": "us-west-2",
+      "DeploymentBucketName": "amplify-trackiteduwebsite-staging-104900-deployment",
+      "UnauthRoleName": "amplify-trackiteduwebsite-staging-104900-unauthRole",
+      "StackName": "amplify-trackiteduwebsite-staging-104900",
+      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-trackiteduwebsite-staging-104900/802db5e0-ad8f-11eb-aa17-02ee1a9675eb",
+      "AmplifyAppId": "dm7y3bsmgn6gv"
+    },
+    "categories": {
+      "auth": {
+        "trackiteduwebsite9e8dd199": {},
+        "userPoolGroups": {}
+      }
+    }
+  },
   "prod": {
     "awscloudformation": {
       "AuthRoleName": "amplify-trackiteduwebsite-prod-131627-authRole",

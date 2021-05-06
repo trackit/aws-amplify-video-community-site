@@ -112,6 +112,7 @@ const Dashboard = () => {
     const [currentPage, setCurrentPage] = useState<string>('')
 
     useEffect(() => {
+        console.log('Called')
         Auth.currentSession().then((data) => {
             const groupsData = data.getIdToken().payload['cognito:groups']
             console.log(data, groupsData)
