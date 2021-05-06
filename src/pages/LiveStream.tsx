@@ -1,6 +1,6 @@
-import { NavBar } from '../../shared/components'
+import { NavBar } from '../shared/components'
 
-const SearchPage = () => {
+const LiveApp = () => {
     return (
         <div>
             <NavBar />
@@ -9,4 +9,4 @@ const SearchPage = () => {
     )
 }
 
-export default SearchPage
+export default LiveApp

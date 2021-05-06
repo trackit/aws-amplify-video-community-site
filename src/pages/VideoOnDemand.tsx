@@ -1,8 +1,8 @@
 import Loader from 'react-loader-spinner'
 import { useEffect, useState } from 'react'
-import { fetchVodFiles, VodAsset } from '../../shared/utilities/'
-import { Slider, Item } from '../../shared/components/VideoSlider'
-import { NavBar } from '../../shared/components'
+import { fetchVodFiles, VodAsset } from '../shared/utilities'
+import { Slider, Item } from '../shared/components/VideoSlider'
+import { NavBar } from '../shared/components'
 
 function renderThumbnails(vodAssets: Array<VodAsset>) {
     if (vodAssets.length > 0)

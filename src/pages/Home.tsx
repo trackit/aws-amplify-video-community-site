@@ -1,4 +1,4 @@
-import { NavBar } from '../../shared/components'
+import { NavBar } from '../shared/components'
 
 const HomePage = () => {
     return (
