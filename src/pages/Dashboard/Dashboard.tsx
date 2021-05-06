@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import Amplify, { Auth, Storage, API, graphqlOperation } from 'aws-amplify'
+import { Auth, Storage, API, graphqlOperation } from 'aws-amplify'
 
 import awsmobile from '../../aws-exports'
 import awsvideoconfig from '../../aws-video-exports'
@@ -17,8 +17,6 @@ import { NavBar } from '../../shared/components'
 import { vodAsset } from '../../API'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { createVodSection } from '../../shared/components/VodStorage/VodStorage'
-
-Amplify.configure(awsmobile)
 
 function GetFiles({ func: setVodAssets }: any) {
     const [nextToken, setNextToken] = useState('')
@@ -91,7 +89,7 @@ const UploadNewVideo = () => {
 
     useEffect(() => {
         retrieveSections()
-    })
+    }, [])
 
     useEffect(() => {
         console.log(sections)
@@ -234,6 +232,7 @@ const Dashboard = () => {
     const [groups, setGroups] = useState([] as Array<string>)
 
     useEffect(() => {
+        console.log('Called')
         Auth.currentSession().then((data) => {
             const groupsData = data.getIdToken().payload['cognito:groups']
             console.log(data, groupsData)
@@ -244,7 +243,7 @@ const Dashboard = () => {
     const [vodAssets, setVodAssets] = useState([])
 
     useEffect(() => {
-        console.log(vodAssets)
+        console.log('VoD assets:', vodAssets)
     }, [vodAssets])
 
     const Admin = () => {
