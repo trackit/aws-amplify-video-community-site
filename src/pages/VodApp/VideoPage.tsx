@@ -1,4 +1,3 @@
-import { withAuthenticator } from 'aws-amplify-react'
 import { useParams } from 'react-router-dom'
 import { useEffect, useState } from 'react'
 import { getVodAsset } from '../../graphql/queries'
@@ -72,4 +71,4 @@ const VideoPage = () => {
     )
 }
 
-export default withAuthenticator(VideoPage, true)
+export default VideoPage

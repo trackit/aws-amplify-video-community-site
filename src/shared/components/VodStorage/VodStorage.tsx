@@ -13,6 +13,7 @@ import awsvideoconfig from '../../../aws-video-exports'
 import awsmobile from '../../../aws-exports'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
 import { CreateSectionInput, DeleteSectionInput } from '../../../API'
+import { ListVodAssets } from './vod.interface'
 
 export const uploadVideo = (
     title: string,
@@ -116,12 +117,15 @@ export const uploadVideo = (
     })
 }
 
-export const listVodFiles = async (nextToken: string) => {
+export const listVodFiles = async (nextToken: string | null) => {
     if (nextToken !== null && nextToken !== '')
         return API.graphql(
             graphqlOperation(listVodAssets, { nextToken: nextToken })
-        )
-    else return API.graphql(graphqlOperation(listVodAssets))
+        ) as Promise<ListVodAssets>
+    else
+        return API.graphql(
+            graphqlOperation(listVodAssets)
+        ) as Promise<ListVodAssets>
 }
 
 export const listVodSections = async (nextToken: string) => {

@@ -1,7 +1,11 @@
-import React from 'react'
+import Amplify from 'aws-amplify'
 import { BrowserRouter as Router, Switch, Route } from 'react-router-dom'
+import { withAuthenticator } from '@aws-amplify/ui-react'
+import 'react-loader-spinner/dist/loader/css/react-spinner-loader.css'
 import { routes } from './assets/routes'
-import './App.css'
+import awsmobile from './aws-exports'
+
+Amplify.configure(awsmobile)
 
 function App() {
     return (
@@ -20,4 +24,4 @@ function App() {
     )
 }
 
-export default App
+export default withAuthenticator(App)
