@@ -7,12 +7,12 @@
     },
     "contentDeliveryNetwork": {
         "signedKey": true,
-        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsPF6k8GEORlpm4+3xVsJ\\naX/SKiH9nQZJ2onBm5VPCarJyz9K/ndbBPau3sb/Xedrs133XznYpnSKi0PlHlwQ\\nP937er1RHzw2f65uzNR7bJgo4fQJj1vJAllCnrdLzsIL8wiZ/K32ld7QYbPwvWxO\\nf3Q15j5Y6hxvSL0bKeiLa6EF33NnzWorpt39gcR+jFzry2u/JSx/aNQYRRuo0azq\\nQIfX+mO/lRpVWN1r0a/vyjjhdr05JNsDFWJAgz/rdD3fzJVz71wjmzu7tXulSJSh\\n2n7GoMH9pldIP5y/eflGC2GOlUC7wEcJ75zPmMdKop+SSO8fNEiw2wgQl4R2jnpv\\nkwIDAQAB\\n-----END PUBLIC KEY-----\\n",
-        "rPublicName": "rCloudFrontPublicKey96cx85ic",
-        "publicKeyName": "TrackitEduVOD-prod-publickey-96cx85ic",
-        "secretPem": "TrackitEduVOD-prod-pem-96cx85ic",
-        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-prod-pem-96cx85ic-lyEPQ7",
-        "functionName": "TrackitEduVOD-prod-tokenGen",
+        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAxGWZRkxis8MaLJc95vtu\\nSCd1cxxXU9V5yJlWwXOAX0qLEv/+oG0z2zgTqWQxMnpTksQzKufye3EFJIMueEPe\\nGqNNmWoWQk48GH1mm2oRmCC+TphHu0Zp4fMIlF7SJ6zjJgGpoD8/DK0Qq0Fq0Wac\\nMwrZrxTjLN5FmCgGt0w13/BEkntdZafr89Ag8Cy5U8HLm9UXzhHgEHOglwqFFWFB\\noHdjV4XS31gYFQIv13mVyKdMFnp5fnSu4uYw3fZjfgnULGaYob86xdz/XbZjQ5dF\\npmsp9QrayumpPwawcqMIaBkVwp/EwntrvdzAOv+CKCyd7KlrsA7iI2x0amUMUOkA\\nEQIDAQAB\\n-----END PUBLIC KEY-----\\n",
+        "rPublicName": "rCloudFrontPublicKeyup6uwzn5",
+        "publicKeyName": "TrackitEduVOD-staging-publickey-up6uwzn5",
+        "secretPem": "TrackitEduVOD-staging-pem-up6uwzn5",
+        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-staging-pem-up6uwzn5-aEMv7R",
+        "functionName": "TrackitEduVOD-staging-tokenGen",
         "enableDistribution": true
     },
     "parameters": {
@@ -36,9 +36,5 @@
         "permissionSchema": [
             "admin"
         ]
-    },
-    "cms": {
-        "overrideSchema": true,
-        "editAPI": true
     }
 }
