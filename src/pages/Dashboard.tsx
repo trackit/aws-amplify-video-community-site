@@ -1,22 +1,19 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Auth, Storage, API, graphqlOperation } from 'aws-amplify'
 
-import awsmobile from '../../aws-exports'
-import awsvideoconfig from '../../aws-video-exports'
-import {
-    uploadVideo,
-    listVodFiles,
-    listVodSections,
-} from '../../shared/components/VodStorage'
+import awsmobile from '../aws-exports'
+import awsvideoconfig from '../aws-video-exports'
+import { uploadVideo } from '../shared/components/VodStorage'
 import {
     deleteThumbnailObject,
     deleteVideoObject,
     deleteVodAsset,
-} from '../../graphql/mutations'
-import { NavBar } from '../../shared/components'
-import { vodAsset } from '../../API'
+} from '../graphql/mutations'
+import { NavBar } from '../shared/components'
+import { vodAsset } from '../API'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { createVodSection } from '../../shared/components/VodStorage/VodStorage'
+import { createVodSection } from '../shared/components/VodStorage/VodStorage'
+import { fetchVodFiles, fetchSections } from '../shared/utilities/vod-fetch'
 
 function GetFiles({ func: setVodAssets }: any) {
     const [nextToken, setNextToken] = useState('')
@@ -24,7 +21,7 @@ function GetFiles({ func: setVodAssets }: any) {
     return (
         <button
             onClick={() => {
-                const getFilesQuery = listVodFiles(
+                const getFilesQuery = fetchVodFiles(
                     nextToken
                 ) as Promise<GraphQLResult>
                 getFilesQuery
@@ -58,7 +55,7 @@ const UploadNewVideo = () => {
     const [nextToken, setToken] = useState<string>('')
 
     const retrieveSections = () => {
-        listVodSections(nextToken)
+        fetchSections(nextToken)
             .then((data: any) => {
                 console.log(data)
                 if (
@@ -89,7 +86,7 @@ const UploadNewVideo = () => {
 
     useEffect(() => {
         retrieveSections()
-    }, [])
+    })
 
     useEffect(() => {
         console.log(sections)

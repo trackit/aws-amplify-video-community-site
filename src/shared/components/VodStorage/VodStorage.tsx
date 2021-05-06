@@ -7,7 +7,7 @@ import {
     createVodAsset,
     deleteSection,
 } from '../../../graphql/mutations'
-import { listSections, listVodAssets } from '../../../graphql/queries'
+import { listVodAssets } from '../../../graphql/queries'
 import { v4 as uuidv4 } from 'uuid'
 import awsvideoconfig from '../../../aws-video-exports'
 import awsmobile from '../../../aws-exports'
@@ -126,14 +126,6 @@ export const listVodFiles = async (nextToken: string | null) => {
         return API.graphql(
             graphqlOperation(listVodAssets)
         ) as Promise<ListVodAssets>
-}
-
-export const listVodSections = async (nextToken: string) => {
-    if (nextToken !== null && nextToken !== '')
-        return API.graphql(
-            graphqlOperation(listSections, { nexToken: nextToken })
-        )
-    else return API.graphql(graphqlOperation(listSections))
 }
 
 export const createVodSection = async (name: string) => {
