@@ -29,12 +29,10 @@ const SectionItem = styled.div`
 const VodApp = () => {
     const [vodAssets, setVodAssets] = useState<any>([])
     const [sections, setSections] = useState<Array<any> | null>(null)
-    const [nextTokenVodFiles, setNextTokenVodFiles] = useState<string | null>(
-        null
-    )
-    const [nextTokenSections, setNextTokenSections] = useState<string | null>(
-        null
-    )
+    const [nextTokenVodFiles, setNextTokenVodFiles] =
+        useState<string | null>(null)
+    const [nextTokenSections, setNextTokenSections] =
+        useState<string | null>(null)
     const [loadingVodFiles, setLoadingVodFiles] = useState(false)
     const [loadingSections, setLoadingSections] = useState(false)
 

@@ -41,9 +41,8 @@ const VideoAddForm = ({ vodFile }: VideoAddFormProps) => {
     const [selectedSections, setSelectedSections] = useState<
         Array<section | undefined>
     >([])
-    const [nextTokenSections, setNextTokenSections] = useState<string | null>(
-        null
-    )
+    const [nextTokenSections, setNextTokenSections] =
+        useState<string | null>(null)
     // const [loading, setLoading] = useState<boolean>(false)
 
     useEffect(() => {
