@@ -1,6 +1,6 @@
 import { API, graphqlOperation } from 'aws-amplify'
 import { GraphQLResult } from '@aws-amplify/api-graphql'
-import { listVodAssets, listSections } from '../../graphql/queries'
+import { listVodAssets } from '../../graphql/queries'
 import { ModelvodAssetFilterInput } from '../../API'
 import { ListVodAssets } from './vod.interface'
 
@@ -26,12 +26,4 @@ async function fetchHighlightedVideos() {
     ) as Promise<GraphQLResult>
 }
 
-async function fetchSections(nextToken: string | null) {
-    if (nextToken !== null && nextToken !== '')
-        return API.graphql(
-            graphqlOperation(listSections, { nexToken: nextToken })
-        )
-    else return API.graphql(graphqlOperation(listSections))
-}
-
-export { fetchVodFiles, fetchHighlightedVideos, fetchSections }
+export { fetchVodFiles, fetchHighlightedVideos }

@@ -90,6 +90,7 @@ export type videoObject = {
 export type thumbnailObject = {
     __typename: 'thumbnailObject'
     id?: string
+    ext?: string
     createdAt?: string
     updatedAt?: string
 }
@@ -156,9 +157,11 @@ export type DeleteVideoObjectInput = {
 
 export type CreateThumbnailObjectInput = {
     id?: string | null
+    ext: string
 }
 
 export type ModelthumbnailObjectConditionInput = {
+    ext?: ModelStringInput | null
     and?: Array<ModelthumbnailObjectConditionInput | null> | null
     or?: Array<ModelthumbnailObjectConditionInput | null> | null
     not?: ModelthumbnailObjectConditionInput | null
@@ -166,6 +169,7 @@ export type ModelthumbnailObjectConditionInput = {
 
 export type UpdateThumbnailObjectInput = {
     id: string
+    ext?: string | null
 }
 
 export type DeleteThumbnailObjectInput = {
@@ -265,6 +269,7 @@ export type ModelvideoObjectConnection = {
 
 export type ModelthumbnailObjectFilterInput = {
     id?: ModelIDInput | null
+    ext?: ModelStringInput | null
     and?: Array<ModelthumbnailObjectFilterInput | null> | null
     or?: Array<ModelthumbnailObjectFilterInput | null> | null
     not?: ModelthumbnailObjectFilterInput | null
@@ -312,6 +317,7 @@ export type CreateVodAssetMutation = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -370,6 +376,7 @@ export type UpdateVodAssetMutation = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -428,6 +435,7 @@ export type DeleteVodAssetMutation = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -518,6 +526,7 @@ export type CreateThumbnailObjectMutation = {
     createThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -532,6 +541,7 @@ export type UpdateThumbnailObjectMutation = {
     updateThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -546,6 +556,7 @@ export type DeleteThumbnailObjectMutation = {
     deleteThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -726,6 +737,7 @@ export type CreateVideoSectionMutation = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null
@@ -795,6 +807,7 @@ export type UpdateVideoSectionMutation = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null
@@ -864,6 +877,7 @@ export type DeleteVideoSectionMutation = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null
@@ -908,6 +922,7 @@ export type GetVodAssetQuery = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -969,6 +984,7 @@ export type ListVodAssetsQuery = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null
@@ -1033,6 +1049,7 @@ export type GetThumbnailObjectQuery = {
     getThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -1050,6 +1067,7 @@ export type ListThumbnailObjectsQuery = {
         items?: Array<{
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null> | null
@@ -1148,6 +1166,7 @@ export type OnCreateVodAssetSubscription = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -1201,6 +1220,7 @@ export type OnUpdateVodAssetSubscription = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -1254,6 +1274,7 @@ export type OnDeleteVodAssetSubscription = {
         thumbnail?: {
             __typename: 'thumbnailObject'
             id: string
+            ext: string
             createdAt: string
             updatedAt: string
         } | null
@@ -1324,6 +1345,7 @@ export type OnCreateThumbnailObjectSubscription = {
     onCreateThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -1333,6 +1355,7 @@ export type OnUpdateThumbnailObjectSubscription = {
     onUpdateThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -1342,6 +1365,7 @@ export type OnDeleteThumbnailObjectSubscription = {
     onDeleteThumbnailObject?: {
         __typename: 'thumbnailObject'
         id: string
+        ext: string
         createdAt: string
         updatedAt: string
     } | null
@@ -1502,6 +1526,7 @@ export type OnCreateVideoSectionSubscription = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null
@@ -1566,6 +1591,7 @@ export type OnUpdateVideoSectionSubscription = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null
@@ -1630,6 +1656,7 @@ export type OnDeleteVideoSectionSubscription = {
             thumbnail?: {
                 __typename: 'thumbnailObject'
                 id: string
+                ext: string
                 createdAt: string
                 updatedAt: string
             } | null

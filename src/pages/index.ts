@@ -1,4 +1,4 @@
-import Dashboard from './Dashboard'
+import Dashboard from './Dashboard/Dashboard'
 import VodApp from './VideoOnDemand'
 import VideoPage from './VideoPlayer/VideoPage'
 import HomePage from './Home'

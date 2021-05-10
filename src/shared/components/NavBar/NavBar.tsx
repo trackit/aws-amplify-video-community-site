@@ -18,7 +18,7 @@ const NavBar = () => {
         <div className="navbar">
             <header>
                 <h2>
-                    <a href="/">TrackIt Amplify Video</a>
+                    <a href="/">Amplify Video</a>
                 </h2>
                 <ul className="nav__links">
                     <li>

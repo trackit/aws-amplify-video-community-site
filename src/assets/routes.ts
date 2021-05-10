@@ -12,7 +12,7 @@ import {
 export const routes: Array<RouteProps> = [
     {
         path: '/admin',
-        component: Dashboard
+        component: Dashboard,
     },
     {
         path: '/',

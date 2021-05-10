@@ -1,21 +1,27 @@
-import cx from 'classnames'
 import { useEffect, useState } from 'react'
 import Loader from 'react-loader-spinner'
 import SliderContext from './Context'
 import ShowDetailsButton from './ShowDetailsButton'
-import { Storage } from 'aws-amplify'
-import awsmobile from '../../../aws-exports'
 import Mark from './Mark'
-import './Item.scss'
+import { fetchThumbnail } from '../../utilities'
+import styled from 'styled-components'
 
-async function fetchThumbnail(asset: any) {
-    return Storage.get(`thumbnails/${asset.thumbnail.id}.jpeg`, {
-        bucket: awsmobile.aws_user_files_s3_bucket,
-        customPrefix: {
-            public: '',
-        },
-    })
-}
+export const StyledItem = styled.div`
+    flex: 0 0 19.7%;
+    transition: transform 300ms ease 100ms;
+    margin: 0 2px;
+    position: relative;
+
+    img {
+        height: 100%;
+        width: 100%;
+        vertical-align: top;
+    }
+
+    &:hover {
+        cursor: pointer;
+    }
+`
 
 const Item = ({ movie }: any) => {
     const [thumbnailUrl, setThumbnailUrl] = useState<Object | string>('')
@@ -46,18 +52,15 @@ const Item = ({ movie }: any) => {
                         timeout={3000}
                     />
                 ) : (
-                    <div
+                    <StyledItem
                         ref={elementRef}
-                        className={cx('item', {
-                            'item--open': isActive,
-                        })}
+                        className={isActive && 'item--open'}
+                        onClick={() => onSelectSlide(movie)}
                     >
-                        <img src={thumbnailUrl as string} alt="" />
-                        <ShowDetailsButton
-                            onClick={() => onSelectSlide(movie)}
-                        />
+                        <img src={thumbnailUrl as string} alt="thumbnail" />
+                        <ShowDetailsButton />
                         {isActive && <Mark />}
-                    </div>
+                    </StyledItem>
                 )
             }}
         </SliderContext.Consumer>

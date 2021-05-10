@@ -1,7 +1,7 @@
-import React from 'react';
-import Amplify from 'aws-amplify';
+import React from 'react'
+import Amplify from 'aws-amplify'
 
-import awsmobile from '../../aws-exports';
+import awsmobile from '../../aws-exports'
 
 Amplify.configure(awsmobile)
 
@@ -13,4 +13,4 @@ const LivestreamManage = () => {
     )
 }
 
-export default LivestreamManage;
+export default LivestreamManage

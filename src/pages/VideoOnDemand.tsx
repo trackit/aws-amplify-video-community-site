@@ -1,8 +1,9 @@
 import Loader from 'react-loader-spinner'
 import { useEffect, useState } from 'react'
-import { fetchVodFiles, VodAsset } from '../shared/utilities'
+import { fetchSections, fetchVodFiles, VodAsset } from '../shared/utilities'
 import { Slider, Item } from '../shared/components/VideoSlider'
 import { NavBar } from '../shared/components'
+import styled from 'styled-components'
 
 function renderThumbnails(vodAssets: Array<VodAsset>) {
     if (vodAssets.length > 0)
@@ -12,35 +13,97 @@ function renderThumbnails(vodAssets: Array<VodAsset>) {
     return <p>No VoD Files</p>
 }
 
+const SectionContainer = styled.div`
+    display: flex;
+    flex-direction: column;
+`
+
+const SectionItem = styled.div`
+    div {
+        h1 {
+            margin-left: 20px;
+        }
+    }
+`
+
 const VodApp = () => {
     const [vodAssets, setVodAssets] = useState<any>([])
-    const [nextToken, setNextToken] = useState<string | null>(null)
-    const [loading, setLoading] = useState(false)
+    const [sections, setSections] = useState<Array<any> | null>(null)
+    const [nextTokenVodFiles, setNextTokenVodFiles] = useState<string | null>(
+        null
+    )
+    const [nextTokenSections, setNextTokenSections] = useState<string | null>(
+        null
+    )
+    const [loadingVodFiles, setLoadingVodFiles] = useState(false)
+    const [loadingSections, setLoadingSections] = useState(false)
 
     useEffect(() => {
         ;(async () => {
-            setLoading(true)
+            setLoadingVodFiles(true)
             try {
-                const { data } = await fetchVodFiles(nextToken)
-                setNextToken(
+                const { data } = await fetchVodFiles(nextTokenVodFiles)
+                setNextTokenVodFiles(
                     data.listVodAssets.nextToken
                         ? data.listVodAssets.nextToken
                         : null
                 )
                 setVodAssets(data.listVodAssets.items)
-                console.log('Data: ', data)
+                console.log('fetchVodFiles: ', data)
             } catch (error) {
-                console.error('VodApp.tsx ', error)
+                console.error('VideoOnDemand.tsx ', error)
             }
-            setLoading(false)
+            setLoadingVodFiles(false)
         })()
-    }, [nextToken])
+    }, [nextTokenVodFiles])
+
+    useEffect(() => {
+        ;(async () => {
+            setLoadingSections(true)
+            try {
+                // TODO: declare fetchSection return type
+                const { data }: any = await fetchSections(nextTokenSections)
+                setNextTokenSections(
+                    data.listSections.nextToken
+                        ? data.listSections.nextToken
+                        : null
+                )
+                let nonce = true
+                data.listSections.items.forEach(
+                    (item: any, index: number, arr: any) => {
+                        if (arr.length <= 3 && nonce) {
+                            arr.push({
+                                label: 'Highlighted',
+                                id: `Highlighted${index}`,
+                            })
+                            nonce = false
+                        }
+                        if (
+                            index % 3 === 0 &&
+                            index !== 0 &&
+                            item.label !== 'Highlighted'
+                        ) {
+                            arr.splice(index, 0, {
+                                label: 'Highlighted',
+                                id: `Highlighted${index}`,
+                            })
+                        }
+                    }
+                )
+                setSections(data.listSections.items)
+                console.log('fetchSections: ', data)
+            } catch (error) {
+                console.error('VideoOnDemand.tsx ', error)
+            }
+            setLoadingSections(false)
+        })()
+    }, [nextTokenSections])
 
     return (
         <div>
             <NavBar />
             {/* TODO: Render each categories vertically */}
-            {loading ? (
+            {loadingVodFiles || loadingSections ? (
                 <Loader
                     type="Bars"
                     color="#FFA41C"
@@ -49,7 +112,35 @@ const VodApp = () => {
                     timeout={3000}
                 />
             ) : (
-                <Slider>{renderThumbnails(vodAssets)}</Slider>
+                <SectionContainer>
+                    {sections &&
+                        sections.map((section: any) => {
+                            return (
+                                <SectionItem key={section.id}>
+                                    {section.label === 'Highlighted' ? (
+                                        <div key={section.label}>
+                                            <h1>{section.label}</h1>
+                                            <Slider>
+                                                {renderThumbnails(
+                                                    vodAssets.filter(
+                                                        (item: any) =>
+                                                            item.highlighted
+                                                    )
+                                                )}
+                                            </Slider>
+                                        </div>
+                                    ) : (
+                                        <div key={section.label}>
+                                            <h1>{section.label}</h1>
+                                            <Slider>
+                                                {renderThumbnails(vodAssets)}
+                                            </Slider>
+                                        </div>
+                                    )}
+                                </SectionItem>
+                            )
+                        })}
+                </SectionContainer>
             )}
         </div>
     )

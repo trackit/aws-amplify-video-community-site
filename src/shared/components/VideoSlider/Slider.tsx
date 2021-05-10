@@ -1,12 +1,42 @@
 import React, { useState } from 'react'
-import cx from 'classnames'
 import SliderContext from './Context'
 import Content from './Content'
 import SlideButton from './SlideButton'
 import SliderWrapper from './SliderWrapper'
 import useSliding from './useSliding'
 import useSizeElement from './useSizeElement'
-import './Slider.scss'
+import styled from 'styled-components'
+import { StyledItem } from './Item'
+import { StyledShowDetailsButton } from './ShowDetailsButton'
+
+const StyledSlider = styled.div`
+    display: flex;
+    position: relative;
+
+    .__container {
+        display: flex;
+        padding: 0 55px;
+        transition: transform 300ms ease 100ms;
+        z-index: 3;
+        width: 100%;
+    }
+
+    &:not(&.--open) ${StyledItem}:hover ${StyledShowDetailsButton} {
+        opacity: 1;
+    }
+
+    &:not(&.--open) ${StyledItem}:hover {
+        transform: scale(1.5) !important;
+    }
+
+    &:not(&.--open):hover ${StyledItem} {
+        transform: translateX(-25%);
+    }
+
+    &:not(&.--open) ${StyledItem}:hover ~ ${StyledItem} {
+        transform: translateX(25%);
+    }
+`
 
 const Slider = ({ children, activeSlide }: any) => {
     const [currentSlide, setCurrentSlide] = useState(activeSlide)
@@ -38,19 +68,15 @@ const Slider = ({ children, activeSlide }: any) => {
     return (
         <SliderContext.Provider value={contextValue}>
             <SliderWrapper>
-                <div
-                    className={cx('slider', {
-                        'slider--open': currentSlide != null,
-                    })}
-                >
+                <StyledSlider className={currentSlide != null ? '--open' : ''}>
                     <div
                         ref={containerRef}
-                        className="slider__container"
+                        className="__container"
                         {...slideProps}
                     >
                         {children}
                     </div>
-                </div>
+                </StyledSlider>
                 {hasPrev && <SlideButton onClick={handlePrev} type="prev" />}
                 {hasNext && <SlideButton onClick={handleNext} type="next" />}
             </SliderWrapper>
