@@ -17,6 +17,7 @@ export const getVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -69,6 +70,7 @@ export const listVodAssets = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }
@@ -124,6 +126,7 @@ export const getThumbnailObject = /* GraphQL */ `
     query GetThumbnailObject($id: ID!) {
         getThumbnailObject(id: $id) {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -142,6 +145,7 @@ export const listThumbnailObjects = /* GraphQL */ `
         ) {
             items {
                 id
+                ext
                 createdAt
                 updatedAt
             }

@@ -1,5 +1,5 @@
 import './NavBar.css'
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Auth } from 'aws-amplify'
 import { AiOutlineSearch } from 'react-icons/ai'
 import { AiOutlineSetting } from 'react-icons/ai'
@@ -18,7 +18,7 @@ const NavBar = () => {
         <div className="navbar">
             <header>
                 <h2>
-                    <a href="/">TrackIt Amplify Video</a>
+                    <a href="/">Amplify Video</a>
                 </h2>
                 <ul className="nav__links">
                     <li>

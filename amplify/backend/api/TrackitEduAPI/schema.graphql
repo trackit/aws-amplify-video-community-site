@@ -29,7 +29,6 @@ type videoObject @model
 )
 {
   id:ID!
-
   token: String @function(name: "TrackitEduVOD-prod-tokenGen")
 }
 
@@ -42,6 +41,7 @@ type thumbnailObject @model
 )
 {
   id:ID!
+  ext:String!
 }
 
 type section @model

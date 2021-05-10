@@ -1,0 +1,4 @@
+amplify/
+aws-exports.js
+aws-video-exports.js
+src/graphql/schema.json

@@ -7,11 +7,11 @@
     },
     "contentDeliveryNetwork": {
         "signedKey": true,
-        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAsPF6k8GEORlpm4+3xVsJ\\naX/SKiH9nQZJ2onBm5VPCarJyz9K/ndbBPau3sb/Xedrs133XznYpnSKi0PlHlwQ\\nP937er1RHzw2f65uzNR7bJgo4fQJj1vJAllCnrdLzsIL8wiZ/K32ld7QYbPwvWxO\\nf3Q15j5Y6hxvSL0bKeiLa6EF33NnzWorpt39gcR+jFzry2u/JSx/aNQYRRuo0azq\\nQIfX+mO/lRpVWN1r0a/vyjjhdr05JNsDFWJAgz/rdD3fzJVz71wjmzu7tXulSJSh\\n2n7GoMH9pldIP5y/eflGC2GOlUC7wEcJ75zPmMdKop+SSO8fNEiw2wgQl4R2jnpv\\nkwIDAQAB\\n-----END PUBLIC KEY-----\\n",
-        "rPublicName": "rCloudFrontPublicKey96cx85ic",
-        "publicKeyName": "TrackitEduVOD-prod-publickey-96cx85ic",
-        "secretPem": "TrackitEduVOD-prod-pem-96cx85ic",
-        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-prod-pem-96cx85ic-lyEPQ7",
+        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1RRY3n6sr5XZhy4GEOVk\\nAq/9iKBmoiH+l3lUOOxXGYYs4ZGXIXBd3fyQE6SVur9qyn8kBTp1ture5zOSd6hH\\na5xEmpR2Jr4X9Ph8d7LrDPzkv7ykuDJtSoIViHHvdg4mBiGBxFyejByvQjxdRXrO\\nCh5M0PrjgU29OSlZ0stO2yeR8GIeCMBKpWriI5N+JljmxsdwORBlBsVFMsspPITP\\n6U4xFo3ZdWxwkpyywdpKa3Db7lewK8x1TFjvzzkIP0ZD934fOwta+U2JBz97l5fd\\nC1hY7LRxZWmIkiwdxASQ0spM3Og/IkkIsLISo5MNylfrC6amHgrwQ0NDABNiR6Q2\\ngwIDAQAB\\n-----END PUBLIC KEY-----\\n",
+        "rPublicName": "rCloudFrontPublicKeyp7axzjoy",
+        "publicKeyName": "TrackitEduVOD-prod-publickey-p7axzjoy",
+        "secretPem": "TrackitEduVOD-prod-pem-p7axzjoy",
+        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-prod-pem-p7axzjoy-3QJbuI",
         "functionName": "TrackitEduVOD-prod-tokenGen",
         "enableDistribution": true
     },
@@ -36,9 +36,5 @@
         "permissionSchema": [
             "admin"
         ]
-    },
-    "cms": {
-        "overrideSchema": true,
-        "editAPI": true
     }
 }

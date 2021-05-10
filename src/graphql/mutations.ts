@@ -20,6 +20,7 @@ export const createVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -70,6 +71,7 @@ export const updateVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -120,6 +122,7 @@ export const deleteVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -198,6 +201,7 @@ export const createThumbnailObject = /* GraphQL */ `
     ) {
         createThumbnailObject(input: $input, condition: $condition) {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -210,6 +214,7 @@ export const updateThumbnailObject = /* GraphQL */ `
     ) {
         updateThumbnailObject(input: $input, condition: $condition) {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -222,6 +227,7 @@ export const deleteThumbnailObject = /* GraphQL */ `
     ) {
         deleteThumbnailObject(input: $input, condition: $condition) {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -376,6 +382,7 @@ export const createVideoSection = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }
@@ -435,6 +442,7 @@ export const updateVideoSection = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }
@@ -494,6 +502,7 @@ export const deleteVideoSection = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }

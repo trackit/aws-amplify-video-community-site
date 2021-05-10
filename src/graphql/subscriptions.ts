@@ -17,6 +17,7 @@ export const onCreateVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -64,6 +65,7 @@ export const onUpdateVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -111,6 +113,7 @@ export const onDeleteVodAsset = /* GraphQL */ `
             }
             thumbnail {
                 id
+                ext
                 createdAt
                 updatedAt
             }
@@ -177,6 +180,7 @@ export const onCreateThumbnailObject = /* GraphQL */ `
     subscription OnCreateThumbnailObject {
         onCreateThumbnailObject {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -186,6 +190,7 @@ export const onUpdateThumbnailObject = /* GraphQL */ `
     subscription OnUpdateThumbnailObject {
         onUpdateThumbnailObject {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -195,6 +200,7 @@ export const onDeleteThumbnailObject = /* GraphQL */ `
     subscription OnDeleteThumbnailObject {
         onDeleteThumbnailObject {
             id
+            ext
             createdAt
             updatedAt
         }
@@ -337,6 +343,7 @@ export const onCreateVideoSection = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }
@@ -393,6 +400,7 @@ export const onUpdateVideoSection = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }
@@ -449,6 +457,7 @@ export const onDeleteVideoSection = /* GraphQL */ `
                 }
                 thumbnail {
                     id
+                    ext
                     createdAt
                     updatedAt
                 }

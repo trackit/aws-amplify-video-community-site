@@ -1,10 +1,10 @@
 import Dashboard from './Dashboard/Dashboard'
-import VodApp from './VodApp/VodApp'
-import VideoPage from './VodApp/VideoPage'
-import HomePage from './Home/HomePage'
-import LiveApp from './Live/LiveApp'
-import WebinarsApp from './Webinars/WebinarsApp'
-import SearchPage from './Search/SearchPage'
+import VodApp from './VideoOnDemand'
+import VideoPage from './VideoPlayer/VideoPage'
+import HomePage from './Home'
+import LiveApp from './LiveStream'
+import WebinarsApp from './Webinars'
+import SearchPage from './Search'
 
 export {
     Dashboard,
