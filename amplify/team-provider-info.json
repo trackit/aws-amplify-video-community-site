@@ -18,31 +18,7 @@
       },
       "video": {
         "TrackitEduVOD": {
-          "s3UUID": "csapbbbn"
-        }
-      }
-    }
-  },
-  "staging": {
-    "awscloudformation": {
-      "AuthRoleName": "amplify-awsamplifyvideocommu-staging-113822-authRole",
-      "UnauthRoleArn": "arn:aws:iam::394125495069:role/amplify-awsamplifyvideocommu-staging-113822-unauthRole",
-      "AuthRoleArn": "arn:aws:iam::394125495069:role/amplify-awsamplifyvideocommu-staging-113822-authRole",
-      "Region": "us-west-2",
-      "DeploymentBucketName": "amplify-awsamplifyvideocommu-staging-113822-deployment",
-      "UnauthRoleName": "amplify-awsamplifyvideocommu-staging-113822-unauthRole",
-      "StackName": "amplify-awsamplifyvideocommu-staging-113822",
-      "StackId": "arn:aws:cloudformation:us-west-2:394125495069:stack/amplify-awsamplifyvideocommu-staging-113822/ce41e840-ae4e-11eb-9682-0a3d5c77df4d",
-      "AmplifyAppId": "dm7y3bsmgn6gv"
-    },
-    "categories": {
-      "auth": {
-        "trackiteduwebsite9e8dd199": {},
-        "userPoolGroups": {}
-      },
-      "video": {
-        "TrackitEduVOD": {
-          "s3UUID": "82i2abiktary"
+          "s3UUID": "v26jncdgy3x8"
         }
       }
     }
