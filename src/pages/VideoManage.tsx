@@ -1,12 +1,7 @@
-import React, { useState, useEffect } from 'react'
-import Amplify from 'aws-amplify'
-
-import awsmobile from '../../aws-exports'
-import AssetsManagementList from '../../shared/components/AssetsManagementList/AssetsManagementList'
-import { fetchVodFiles } from '../../shared/utilities'
+import { useState, useEffect } from 'react'
+import AssetsManagementList from '../shared/components/AssetsManagementList/AssetsManagementList'
+import { fetchVodFiles } from '../shared/utilities'
 import Loader from 'react-loader-spinner'
-
-Amplify.configure(awsmobile)
 
 const DashboardVideoManage = () => {
     const [vodAssets, setVodAssets] = useState<any>([])

@@ -7,12 +7,12 @@
     },
     "contentDeliveryNetwork": {
         "signedKey": true,
-        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA1RRY3n6sr5XZhy4GEOVk\\nAq/9iKBmoiH+l3lUOOxXGYYs4ZGXIXBd3fyQE6SVur9qyn8kBTp1ture5zOSd6hH\\na5xEmpR2Jr4X9Ph8d7LrDPzkv7ykuDJtSoIViHHvdg4mBiGBxFyejByvQjxdRXrO\\nCh5M0PrjgU29OSlZ0stO2yeR8GIeCMBKpWriI5N+JljmxsdwORBlBsVFMsspPITP\\n6U4xFo3ZdWxwkpyywdpKa3Db7lewK8x1TFjvzzkIP0ZD934fOwta+U2JBz97l5fd\\nC1hY7LRxZWmIkiwdxASQ0spM3Og/IkkIsLISo5MNylfrC6amHgrwQ0NDABNiR6Q2\\ngwIDAQAB\\n-----END PUBLIC KEY-----\\n",
-        "rPublicName": "rCloudFrontPublicKeyp7axzjoy",
-        "publicKeyName": "TrackitEduVOD-prod-publickey-p7axzjoy",
-        "secretPem": "TrackitEduVOD-prod-pem-p7axzjoy",
-        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-prod-pem-p7axzjoy-3QJbuI",
-        "functionName": "TrackitEduVOD-prod-tokenGen",
+        "publicKey": "-----BEGIN PUBLIC KEY-----\\nMIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEAudtLk+kuBZv0QpSe+5lT\\nP0g9E+h/y33Oww0hVbck6wuQuX1mv+AgaOb5udmSDw37gh7sBAERvQOKu2fZF5Xj\\nEhPJqi7/5XJfqYsa7oIx3wndvwEo1uHVFebejdPeeAA+3+KXusfbIWXo2uDHJZtB\\ndeSM1+Y8IJL7HrdBdLV5r9q7Bj4Nhn2PVs/m9kBjRiMUpU4Ie/2wnC2ATIR/M4x4\\nJE1di3/WlvsYOMk2g6V+gXKsXnex/Yv3hSjyXeYEsFVouI2GAt/0MHsP8LvStI3P\\nRq8t/x+YDOsk5U6ttdJBo/FCfpdacV5JwB3vy+xKhAXQDBsPTe9SGC9iMXusgsFj\\n+wIDAQAB\\n-----END PUBLIC KEY-----\\n",
+        "rPublicName": "rCloudFrontPublicKeyoqwwvugy",
+        "publicKeyName": "TrackitEduVOD-staging-publickey-oqwwvugy",
+        "secretPem": "TrackitEduVOD-staging-pem-oqwwvugy",
+        "secretPemArn": "arn:aws:secretsmanager:us-west-2:394125495069:secret:TrackitEduVOD-staging-pem-oqwwvugy-GjqsrI",
+        "functionName": "TrackitEduVOD-staging-tokenGen",
         "enableDistribution": true
     },
     "parameters": {

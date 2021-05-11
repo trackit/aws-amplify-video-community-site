@@ -1,11 +1,6 @@
-import React, { useEffect, useState } from 'react'
-import Amplify from 'aws-amplify'
-
-import awsmobile from '../../aws-exports'
-import { section } from '../../API'
-import { fetchSections, uploadVideo } from '../../shared/utilities'
-
-Amplify.configure(awsmobile)
+import { useEffect, useState } from 'react'
+import { section } from '../API'
+import { fetchSections, uploadVideo } from '../shared/utilities'
 
 type DropZoneProps = {
     setVodFile: any

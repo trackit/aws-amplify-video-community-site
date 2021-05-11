@@ -1,10 +1,9 @@
-import React, { useEffect, useState } from 'react'
+import { useEffect, useState } from 'react'
 import { Switch, Route, Link, useRouteMatch } from 'react-router-dom'
 
-import Amplify, { Auth } from 'aws-amplify'
+import { Auth } from 'aws-amplify'
 
-import awsmobile from '../../aws-exports'
-import { NavBar } from '../../shared/components'
+import { NavBar } from '../shared/components'
 import VideoAdd from './VideoAdd'
 import VideoManage from './VideoManage'
 import LivestreamAdd from './LivestreamAdd'
@@ -12,8 +11,6 @@ import LivestreamManage from './LivestreamManage'
 import WebinarAdd from './WebinarAdd'
 import WebinarManage from './WebinarManage'
 import { withAuthenticator } from '@aws-amplify/ui-react'
-
-Amplify.configure(awsmobile)
 
 type LeftPanelProps = {
     currentPage: string
