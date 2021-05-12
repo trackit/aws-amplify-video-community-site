@@ -12,6 +12,8 @@ import LivestreamManage from './LivestreamManage'
 import WebinarAdd from './WebinarAdd'
 import WebinarManage from './WebinarManage'
 import { withAuthenticator } from '@aws-amplify/ui-react'
+import SectionManage from './SectionManage'
+import SectionAdd from './SectionAdd'
 
 Amplify.configure(awsmobile)
 
@@ -102,10 +104,10 @@ const RightPanel = () => {
         <div style={{ width: '100%', padding: '15px' }}>
             <Switch>
                 <Route path={`${match.path}/section/add`}>
-                    <div>Replace div by the good component</div>
+                    <SectionAdd />
                 </Route>
                 <Route path={`${match.path}/section/manage`}>
-                    <div>Replace div by the good component</div>
+                    <SectionManage />
                 </Route>
                 <Route path={`${match.path}/video/add`}>
                     <VideoAdd />
