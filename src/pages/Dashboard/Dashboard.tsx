@@ -24,6 +24,23 @@ const LeftPanel = ({ currentPage, setCurrentPage }: LeftPanelProps) => {
     const match = useRouteMatch()
     return (
         <div>
+            <h2>Sections</h2>
+            <div>
+                <Link
+                    to={`${match.url}/section/add`}
+                    onClick={() => setCurrentPage('/section/add')}
+                >
+                    Add new section
+                </Link>
+            </div>
+            <div>
+                <Link
+                    to={`${match.url}/section/manage`}
+                    onClick={() => setCurrentPage('/section/manage')}
+                >
+                    Manage sections
+                </Link>
+            </div>
             <h2>Video</h2>
             <div>
                 <Link
@@ -84,6 +101,12 @@ const RightPanel = () => {
     return (
         <div style={{ width: '100%', padding: '15px' }}>
             <Switch>
+                <Route path={`${match.path}/section/add`}>
+                    <div>Replace div by the good component</div>
+                </Route>
+                <Route path={`${match.path}/section/manage`}>
+                    <div>Replace div by the good component</div>
+                </Route>
                 <Route path={`${match.path}/video/add`}>
                     <VideoAdd />
                 </Route>
