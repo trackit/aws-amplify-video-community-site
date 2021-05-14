@@ -3,6 +3,8 @@ import Amplify from 'aws-amplify'
 
 import awsmobile from '../../aws-exports'
 import { fetchSections } from '../../shared/utilities'
+import Loader from 'react-loader-spinner'
+import SectionsManagementList from '../../shared/components/SectionsManagementList/SectionsManagementList'
 
 Amplify.configure(awsmobile)
 
@@ -31,7 +33,17 @@ const SectionManage = () => {
 
     return (
         <div>
-            <h1>Section Manage</h1>
+            {loading ? (
+                <Loader
+                    type="Bars"
+                    color="#FFA41C"
+                    height={100}
+                    width={100}
+                    timeout={3000}
+                />
+            ) : (
+                <SectionsManagementList sections={sections} />
+            )}
         </div>
     )
 }

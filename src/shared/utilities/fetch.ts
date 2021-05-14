@@ -15,8 +15,8 @@ async function fetchSections(nextToken: string | null) {
     }
 }
 
-async function fetchSection(id: string | null) {
-    return API.graphql(graphqlOperation(getSection, { input: { id } }))
+async function fetchSection(id: string) {
+    return API.graphql(graphqlOperation(getSection, { id: id }))
 }
 
 async function fetchThumbnail(asset: any) {
