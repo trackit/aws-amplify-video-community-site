@@ -60,7 +60,7 @@ const SectionVideos = ({ videos }: any) => {
                 <ul>
                     {videos.map((video: any) => {
                         return (
-                            <li>
+                            <li key={video.video.id}>
                                 <a href={`/video/${video.video.id}`}>
                                     {video.video.title}
                                 </a>
