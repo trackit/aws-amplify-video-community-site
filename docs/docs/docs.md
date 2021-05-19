@@ -1,20 +1,17 @@
 ---
 title: Docs
-description: Amplify Framework documentation - Learn how to use Amplify to develop and deploy cloud-powered mobile and web apps.
+description: AWS Amplify Video Community Site - Learn how to use Amplify to develop and deploy cloud-powered mobile and web apps from an example.
 noTemplate: true
 disableLinkification: true
 ---
 
 <docs-hero>
   <h1 slot="heading" class="font-weight-300">
-    Amplify Framework Documentation
+    AWS Amplify Video Community Site
   </h1>
   <p slot="subheading" class="font-weight-300">
-    Learn how to use Amplify to develop and deploy cloud-powered mobile
-    and web apps
+    Learn how to use Amplify from a React App example
   </p>
-
-  <docs-landing-hero-cta slot="cta" />
 </docs-hero>
 <docs-container
   class="background-color-off-white"
@@ -22,18 +19,11 @@ disableLinkification: true
   <h4 class="text-align-center">Discover the end-to-end AWS solution for mobile and front-end web developers</h4>
     <amplify-responsive-grid columns="1">
   <amplify-responsive-grid columns="4" class="margin-top-lg">
-      <docs-card url="~/example/example.md" class="border-radius">
+      <docs-card url="~/getting-started/getting-started.md" class="border-radius">
         <img slot="graphic" src="~/assets/lib.png" />
-        <h4 slot="heading">Example</h4>
+        <h4 slot="heading">Getting Started</h4>
         <p slot="description">
-          A example card
-        </p>
-      </docs-card>
-      <docs-card url="~/example/example.md" class="border-radius">
-        <img slot="graphic" src="~/assets/console.png" />
-        <h4 slot="heading">Other link on example</h4>
-        <p slot="description">
-          Visually configure and manage your app backend.
+          Install, build and run it locally
         </p>
       </docs-card>
     </amplify-responsive-grid>
