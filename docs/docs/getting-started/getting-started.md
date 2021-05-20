@@ -3,7 +3,7 @@ title: Running AWS Amplify Video Community Site locally
 description: Steps to run project locally
 ---
 
-# Requierments
+# Requirements
 
 ## Install amplify-cli
 ```
